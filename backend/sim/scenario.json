@@ -1,0 +1,641 @@
+{
+ "name": "Nag river flash flood (scripted)",
+ "simulated": true,
+ "seed": 42,
+ "notes": "All events, failures, SOS calls and bed counts are simulated. Hospitals are a provisional pick.",
+ "hospitals": [
+  {
+   "id": "way/758158865",
+   "name": "Central India Institute Of Medical Sciences",
+   "lat": 21.128630097547454,
+   "lon": 79.06139747960043,
+   "node": 11987415710,
+   "emergency": false,
+   "area_m2": 1342.3,
+   "source": "osm",
+   "simulated": false,
+   "capacity": {
+    "beds_total": 150,
+    "beds_available": 58,
+    "simulated": true
+   },
+   "provisional": true
+  },
+  {
+   "id": "node/8806023876",
+   "name": "Ganga Care Hospital Limited",
+   "lat": 21.1460772,
+   "lon": 79.0660212,
+   "node": 13299228277,
+   "emergency": false,
+   "area_m2": 0.0,
+   "source": "osm",
+   "simulated": false,
+   "capacity": {
+    "beds_total": 87,
+    "beds_available": 14,
+    "simulated": true
+   },
+   "provisional": true
+  },
+  {
+   "id": "node/297648562",
+   "name": "Govt. Medical College",
+   "lat": 21.1295149,
+   "lon": 79.0974689,
+   "node": 4941938564,
+   "emergency": true,
+   "area_m2": 0.0,
+   "source": "osm",
+   "simulated": false,
+   "capacity": {
+    "beds_total": 481,
+    "beds_available": 83,
+    "simulated": true
+   },
+   "provisional": true
+  },
+  {
+   "id": "way/1241317281",
+   "name": "Harishchandra Healthcare Pvt Ltd",
+   "lat": 21.149713473978746,
+   "lon": 79.09932421035289,
+   "node": 11047676469,
+   "emergency": true,
+   "area_m2": 2328.6,
+   "source": "osm",
+   "simulated": false,
+   "capacity": {
+    "beds_total": 774,
+    "beds_available": 124,
+    "simulated": true
+   },
+   "provisional": true
+  },
+  {
+   "id": "node/3261056793",
+   "name": "Indira Gandhi Medical College",
+   "lat": 21.1491099,
+   "lon": 79.1159505,
+   "node": 4939627467,
+   "emergency": true,
+   "area_m2": 0.0,
+   "source": "osm",
+   "simulated": false,
+   "capacity": {
+    "beds_total": 758,
+    "beds_available": 96,
+    "simulated": true
+   },
+   "provisional": true
+  },
+  {
+   "id": "node/299190531",
+   "name": "Indira Gandhi Medical College & Hospital",
+   "lat": 21.1541868,
+   "lon": 79.0936492,
+   "node": 12183394384,
+   "emergency": true,
+   "area_m2": 0.0,
+   "source": "osm",
+   "simulated": false,
+   "capacity": {
+    "beds_total": 342,
+    "beds_available": 110,
+    "simulated": true
+   },
+   "provisional": true
+  },
+  {
+   "id": "node/2593300353",
+   "name": "Nagpur Super Speciality Hospital",
+   "lat": 21.1241779,
+   "lon": 79.1026344,
+   "node": 4940115183,
+   "emergency": true,
+   "area_m2": 0.0,
+   "source": "osm",
+   "simulated": false,
+   "capacity": {
+    "beds_total": 314,
+    "beds_available": 34,
+    "simulated": true
+   },
+   "provisional": true
+  }
+ ],
+ "failure_points": [
+  {
+   "id": "FP1",
+   "name": "Panchpaoli Flyover",
+   "lat": 21.1512225,
+   "lon": 79.10023355000001,
+   "zone": "Z07",
+   "edges": [
+    [
+     296923124,
+     4942043472
+    ],
+    [
+     14075751162,
+     14075751211
+    ]
+   ],
+   "river_distance_m": 3.3,
+   "isolates_zone": "Z11",
+   "simulated": true
+  },
+  {
+   "id": "FP2",
+   "name": "Unnamed road near Z11",
+   "lat": 21.1576687,
+   "lon": 79.0908298,
+   "zone": "Z11",
+   "edges": [
+    [
+     3755346542,
+     4584404214
+    ]
+   ],
+   "river_distance_m": 787.7,
+   "isolates_zone": "Z11",
+   "simulated": true
+  },
+  {
+   "id": "FP3",
+   "name": "Mangalwari Bazaar Marg",
+   "lat": 21.1649125,
+   "lon": 79.08625775,
+   "zone": "Z10",
+   "edges": [
+    [
+     4937900929,
+     4938078328
+    ],
+    [
+     12224049947,
+     12224049948
+    ]
+   ],
+   "river_distance_m": 1429.5,
+   "isolates_zone": "Z11",
+   "simulated": true
+  },
+  {
+   "id": "FP4",
+   "name": "Unnamed road near Z11",
+   "lat": 21.156771550000002,
+   "lon": 79.1043366,
+   "zone": "Z12",
+   "edges": [
+    [
+     4938391878,
+     4938391887
+    ],
+    [
+     4938391881,
+     4938391884
+    ]
+   ],
+   "river_distance_m": 1524.8,
+   "isolates_zone": "Z11",
+   "simulated": true
+  }
+ ],
+ "flood_zones": [
+  {
+   "zone": "Z07",
+   "flood_at_mm_hr": 30,
+   "simulated": true
+  },
+  {
+   "zone": "Z08",
+   "flood_at_mm_hr": 45,
+   "simulated": true
+  },
+  {
+   "zone": "Z06",
+   "flood_at_mm_hr": 60,
+   "simulated": true
+  },
+  {
+   "zone": "Z09",
+   "flood_at_mm_hr": 75,
+   "simulated": true
+  }
+ ],
+ "zone_params": {
+  "Z01": {
+   "vulnerability": 0.0058
+  },
+  "Z02": {
+   "vulnerability": 0.0022
+  },
+  "Z03": {
+   "vulnerability": 0.0037
+  },
+  "Z04": {
+   "vulnerability": 0.0033
+  },
+  "Z05": {
+   "vulnerability": 0.0064
+  },
+  "Z06": {
+   "vulnerability": 0.0061
+  },
+  "Z07": {
+   "vulnerability": 0.0074
+  },
+  "Z08": {
+   "vulnerability": 0.0025
+  },
+  "Z09": {
+   "vulnerability": 0.0045
+  },
+  "Z10": {
+   "vulnerability": 0.0022
+  },
+  "Z11": {
+   "vulnerability": 0.0033
+  },
+  "Z12": {
+   "vulnerability": 0.005
+  }
+ },
+ "timeline": [
+  {
+   "t": 0,
+   "type": "rain",
+   "mm_per_hr": 15
+  },
+  {
+   "t": 300,
+   "type": "rain",
+   "mm_per_hr": 45
+  },
+  {
+   "t": 600,
+   "type": "sos_wave",
+   "incidents": [
+    {
+     "zone": "Z07",
+     "lat": 21.1433931,
+     "lon": 79.095762,
+     "severity": 4,
+     "people": 23,
+     "kind": "medical",
+     "source": "ivr"
+    },
+    {
+     "zone": "Z07",
+     "lat": 21.1449413,
+     "lon": 79.0896631,
+     "severity": 3,
+     "people": 8,
+     "kind": "medical",
+     "source": "dashboard"
+    },
+    {
+     "zone": "Z08",
+     "lat": 21.140732,
+     "lon": 79.1084857,
+     "severity": 3,
+     "people": 24,
+     "kind": "supplies",
+     "source": "sms"
+    },
+    {
+     "zone": "Z08",
+     "lat": 21.1496634,
+     "lon": 79.1092562,
+     "severity": 4,
+     "people": 36,
+     "kind": "medical",
+     "source": "dashboard"
+    },
+    {
+     "zone": "Z11",
+     "lat": 21.170425,
+     "lon": 79.0884479,
+     "severity": 5,
+     "people": 20,
+     "kind": "supplies",
+     "source": "sms"
+    },
+    {
+     "zone": "Z01",
+     "lat": 21.1191458,
+     "lon": 79.0721604,
+     "severity": 2,
+     "people": 6,
+     "kind": "medical",
+     "source": "ivr"
+    },
+    {
+     "zone": "Z02",
+     "lat": 21.1308009,
+     "lon": 79.0768182,
+     "severity": 3,
+     "people": 7,
+     "kind": "medical",
+     "source": "app"
+    },
+    {
+     "zone": "Z05",
+     "lat": 21.1457355,
+     "lon": 79.0719221,
+     "severity": 3,
+     "people": 31,
+     "kind": "supplies",
+     "source": "sms"
+    },
+    {
+     "zone": "Z04",
+     "lat": 21.1233006,
+     "lon": 79.1049357,
+     "severity": 3,
+     "people": 24,
+     "kind": "medical",
+     "source": "sms"
+    },
+    {
+     "zone": "Z02",
+     "lat": 21.1254098,
+     "lon": 79.081618,
+     "severity": 1,
+     "people": 40,
+     "kind": "supplies",
+     "source": "ivr"
+    },
+    {
+     "zone": "Z05",
+     "lat": 21.1498486,
+     "lon": 79.0654832,
+     "severity": 2,
+     "people": 12,
+     "kind": "medical",
+     "source": "dashboard"
+    },
+    {
+     "zone": "Z10",
+     "lat": 21.1717727,
+     "lon": 79.0855104,
+     "severity": 5,
+     "people": 16,
+     "kind": "supplies",
+     "source": "sms"
+    },
+    {
+     "zone": "Z01",
+     "lat": 21.1192089,
+     "lon": 79.0684692,
+     "severity": 2,
+     "people": 4,
+     "kind": "medical",
+     "source": "dashboard"
+    }
+   ]
+  },
+  {
+   "t": 900,
+   "type": "rain",
+   "mm_per_hr": 65
+  },
+  {
+   "t": 1200,
+   "type": "fail",
+   "failure_point": "FP1"
+  },
+  {
+   "t": 1500,
+   "type": "fail",
+   "failure_point": "FP2"
+  },
+  {
+   "t": 1800,
+   "type": "sos_wave",
+   "incidents": [
+    {
+     "zone": "Z06",
+     "lat": 21.1540342,
+     "lon": 79.0813335,
+     "severity": 4,
+     "people": 11,
+     "kind": "medical",
+     "source": "ivr"
+    },
+    {
+     "zone": "Z06",
+     "lat": 21.1429137,
+     "lon": 79.0870852,
+     "severity": 5,
+     "people": 36,
+     "kind": "medical",
+     "source": "dashboard"
+    },
+    {
+     "zone": "Z07",
+     "lat": 21.14622,
+     "lon": 79.0897022,
+     "severity": 4,
+     "people": 25,
+     "kind": "medical",
+     "source": "ivr"
+    },
+    {
+     "zone": "Z11",
+     "lat": 21.1674715,
+     "lon": 79.1017778,
+     "severity": 4,
+     "people": 7,
+     "kind": "medical",
+     "source": "app"
+    },
+    {
+     "zone": "Z11",
+     "lat": 21.1695481,
+     "lon": 79.0970891,
+     "severity": 2,
+     "people": 29,
+     "kind": "supplies",
+     "source": "app"
+    },
+    {
+     "zone": "Z02",
+     "lat": 21.1239972,
+     "lon": 79.0808728,
+     "severity": 4,
+     "people": 40,
+     "kind": "medical",
+     "source": "sms"
+    },
+    {
+     "zone": "Z02",
+     "lat": 21.1255228,
+     "lon": 79.0816022,
+     "severity": 1,
+     "people": 9,
+     "kind": "supplies",
+     "source": "sms"
+    },
+    {
+     "zone": "Z12",
+     "lat": 21.1567018,
+     "lon": 79.1042831,
+     "severity": 1,
+     "people": 20,
+     "kind": "medical",
+     "source": "ivr"
+    },
+    {
+     "zone": "Z12",
+     "lat": 21.1566845,
+     "lon": 79.1098429,
+     "severity": 1,
+     "people": 18,
+     "kind": "supplies",
+     "source": "ivr"
+    },
+    {
+     "zone": "Z03",
+     "lat": 21.1322874,
+     "lon": 79.0903859,
+     "severity": 1,
+     "people": 21,
+     "kind": "supplies",
+     "source": "ivr"
+    },
+    {
+     "zone": "Z05",
+     "lat": 21.1541703,
+     "lon": 79.0642323,
+     "severity": 3,
+     "people": 12,
+     "kind": "supplies",
+     "source": "app"
+    }
+   ]
+  },
+  {
+   "t": 2100,
+   "type": "fail",
+   "failure_point": "FP3"
+  },
+  {
+   "t": 2400,
+   "type": "fail",
+   "failure_point": "FP4"
+  },
+  {
+   "t": 2700,
+   "type": "vehicle_lost",
+   "vehicle": "DRO-01"
+  },
+  {
+   "t": 2800,
+   "type": "rain",
+   "mm_per_hr": 80
+  },
+  {
+   "t": 3000,
+   "type": "sos_wave",
+   "incidents": [
+    {
+     "zone": "Z11",
+     "lat": 21.1677092,
+     "lon": 79.0911473,
+     "severity": 3,
+     "people": 17,
+     "kind": "medical",
+     "source": "ivr"
+    },
+    {
+     "zone": "Z11",
+     "lat": 21.1674445,
+     "lon": 79.1014702,
+     "severity": 1,
+     "people": 7,
+     "kind": "supplies",
+     "source": "dashboard"
+    },
+    {
+     "zone": "Z11",
+     "lat": 21.1706885,
+     "lon": 79.096724,
+     "severity": 1,
+     "people": 36,
+     "kind": "medical",
+     "source": "ivr"
+    },
+    {
+     "zone": "Z09",
+     "lat": 21.1615646,
+     "lon": 79.0638402,
+     "severity": 4,
+     "people": 37,
+     "kind": "medical",
+     "source": "sms"
+    },
+    {
+     "zone": "Z08",
+     "lat": 21.140719,
+     "lon": 79.1085533,
+     "severity": 5,
+     "people": 29,
+     "kind": "medical",
+     "source": "ivr"
+    },
+    {
+     "zone": "Z05",
+     "lat": 21.1465119,
+     "lon": 79.0655977,
+     "severity": 3,
+     "people": 27,
+     "kind": "supplies",
+     "source": "sms"
+    },
+    {
+     "zone": "Z04",
+     "lat": 21.1242547,
+     "lon": 79.1049487,
+     "severity": 5,
+     "people": 30,
+     "kind": "medical",
+     "source": "ivr"
+    },
+    {
+     "zone": "Z01",
+     "lat": 21.127176,
+     "lon": 79.068447,
+     "severity": 1,
+     "people": 23,
+     "kind": "medical",
+     "source": "ivr"
+    },
+    {
+     "zone": "Z03",
+     "lat": 21.135709,
+     "lon": 79.0893502,
+     "severity": 1,
+     "people": 6,
+     "kind": "supplies",
+     "source": "app"
+    },
+    {
+     "zone": "Z12",
+     "lat": 21.161192,
+     "lon": 79.1165235,
+     "severity": 1,
+     "people": 4,
+     "kind": "medical",
+     "source": "app"
+    }
+   ]
+  },
+  {
+   "t": 3300,
+   "type": "rain",
+   "mm_per_hr": 40
+  }
+ ]
+}
