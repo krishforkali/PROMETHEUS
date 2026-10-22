@@ -1,0 +1,184 @@
+[
+ {
+  "id": "AMB-01",
+  "type": "ambulance",
+  "capacity": 2,
+  "speed_kmh": 40.0,
+  "terrain": "road",
+  "depot": {
+   "lat": 21.1307648,
+   "lon": 79.0983157,
+   "node": 3198569201
+  },
+  "simulated": true
+ },
+ {
+  "id": "AMB-02",
+  "type": "ambulance",
+  "capacity": 2,
+  "speed_kmh": 40.0,
+  "terrain": "road",
+  "depot": {
+   "lat": 21.1310422,
+   "lon": 79.0821048,
+   "node": 13542720721
+  },
+  "simulated": true
+ },
+ {
+  "id": "AMB-03",
+  "type": "ambulance",
+  "capacity": 2,
+  "speed_kmh": 40.0,
+  "terrain": "road",
+  "depot": {
+   "lat": 21.129156,
+   "lon": 79.1138731,
+   "node": 4941753856
+  },
+  "simulated": true
+ },
+ {
+  "id": "AMB-04",
+  "type": "ambulance",
+  "capacity": 2,
+  "speed_kmh": 40.0,
+  "terrain": "road",
+  "depot": {
+   "lat": 21.137428,
+   "lon": 79.084511,
+   "node": 297431973
+  },
+  "simulated": true
+ },
+ {
+  "id": "AMB-05",
+  "type": "ambulance",
+  "capacity": 2,
+  "speed_kmh": 40.0,
+  "terrain": "road",
+  "depot": {
+   "lat": 21.1343817,
+   "lon": 79.0822989,
+   "node": 2433809937
+  },
+  "simulated": true
+ },
+ {
+  "id": "AMB-06",
+  "type": "ambulance",
+  "capacity": 2,
+  "speed_kmh": 40.0,
+  "terrain": "road",
+  "depot": {
+   "lat": 21.1341811,
+   "lon": 79.078904,
+   "node": 298937192
+  },
+  "simulated": true
+ },
+ {
+  "id": "BOA-01",
+  "type": "boat",
+  "capacity": 8,
+  "speed_kmh": 15.0,
+  "terrain": "water",
+  "depot": {
+   "lat": 21.1340373,
+   "lon": 79.0755846,
+   "node": 7274261899
+  },
+  "simulated": true
+ },
+ {
+  "id": "BOA-02",
+  "type": "boat",
+  "capacity": 8,
+  "speed_kmh": 15.0,
+  "terrain": "water",
+  "depot": {
+   "lat": 21.1703616,
+   "lon": 79.064192,
+   "node": 4937935734
+  },
+  "simulated": true
+ },
+ {
+  "id": "BOA-03",
+  "type": "boat",
+  "capacity": 8,
+  "speed_kmh": 15.0,
+  "terrain": "water",
+  "depot": {
+   "lat": 21.169052,
+   "lon": 79.0790331,
+   "node": 5843236195
+  },
+  "simulated": true
+ },
+ {
+  "id": "DRO-01",
+  "type": "drone",
+  "capacity": 1,
+  "speed_kmh": 60.0,
+  "terrain": "air",
+  "depot": {
+   "lat": 21.1312485,
+   "lon": 79.0799527,
+   "node": 297458816
+  },
+  "simulated": true
+ },
+ {
+  "id": "DRO-02",
+  "type": "drone",
+  "capacity": 1,
+  "speed_kmh": 60.0,
+  "terrain": "air",
+  "depot": {
+   "lat": 21.1291592,
+   "lon": 79.1144277,
+   "node": 4941753856
+  },
+  "simulated": true
+ },
+ {
+  "id": "TRU-01",
+  "type": "truck",
+  "capacity": 500,
+  "speed_kmh": 30.0,
+  "terrain": "road",
+  "depot": {
+   "lat": 21.137428,
+   "lon": 79.084511,
+   "node": 297431973
+  },
+  "simulated": true
+ },
+ {
+  "id": "TRU-02",
+  "type": "truck",
+  "capacity": 500,
+  "speed_kmh": 30.0,
+  "terrain": "road",
+  "depot": {
+   "lat": 21.1280221,
+   "lon": 79.1140026,
+   "node": 4941753868
+  },
+  "simulated": true
+ },
+ {
+  "id": "TRU-03",
+  "type": "truck",
+  "capacity": 500,
+  "speed_kmh": 30.0,
+  "terrain": "road",
+  "depot": {
+   "lat": 21.1372887,
+   "lon": 79.0800371,
+   "node": 298937189
+  },
+  "simulated": true
+ }
+]

@@ -1,0 +1,26 @@
+{
+ "seed": 42,
+ "center": {
+  "lat": 21.1458,
+  "lon": 79.0882
+ },
+ "radius_m": 3000,
+ "bbox": {
+  "south": 21.11885066475027,
+  "west": 79.05930503590794,
+  "north": 21.172749335249733,
+  "east": 79.11709496409206
+ },
+ "sources": {
+  "roads": "osm",
+  "hospitals": "osm"
+ },
+ "counts": {
+  "nodes": 998,
+  "edges": 1951,
+  "hospitals": 242,
+  "zones": 12,
+  "fleet": 14
+ },
+ "notes": "Zone attributes and fleet are simulated. Roads/hospitals are OSM unless sources says synthetic."
+}

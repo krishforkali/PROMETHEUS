@@ -1,0 +1,2180 @@
+[
+ {
+  "id": "node/10285002109",
+  "name": "Unnamed hospital",
+  "lat": 21.1281645,
+  "lon": 79.0938826,
+  "node": 4940061861,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/11351141870",
+  "name": "Dr. Sunil V. Bajaj",
+  "lat": 21.1235966,
+  "lon": 79.1111558,
+  "node": 298095864,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/11387104749",
+  "name": "Kingsway Hospital",
+  "lat": 21.1545986,
+  "lon": 79.0848229,
+  "node": 7274269343,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/1834257603",
+  "name": "Inpatient Department",
+  "lat": 21.126903,
+  "lon": 79.1141613,
+  "node": 3112468847,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/1834257604",
+  "name": "Outpatient Department",
+  "lat": 21.127343,
+  "lon": 79.1136038,
+  "node": 3112468847,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/1836790305",
+  "name": "Sanjivani Hospital",
+  "lat": 21.1331511,
+  "lon": 79.0998847,
+  "node": 14075751250,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/1966830165",
+  "name": "Matoshri Nursing Home",
+  "lat": 21.129156,
+  "lon": 79.1138731,
+  "node": 4941753856,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/2536741976",
+  "name": "Matru Sewa Sangh (Maternity)",
+  "lat": 21.1438599,
+  "lon": 79.1076243,
+  "node": 13999690433,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/2593300353",
+  "name": "Nagpur Super Speciality Hospital",
+  "lat": 21.1241779,
+  "lon": 79.1026344,
+  "node": 4940115183,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/2593300379",
+  "name": "Rashtrasant Tukdoji Maharaj Cancer Hospital",
+  "lat": 21.1239077,
+  "lon": 79.1043456,
+  "node": 4941938581,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/2857626554",
+  "name": "Arneja Heart and Multispeciality Hospital",
+  "lat": 21.1350759,
+  "lon": 79.0745814,
+  "node": 297133348,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/297648562",
+  "name": "Govt. Medical College",
+  "lat": 21.1295149,
+  "lon": 79.0974689,
+  "node": 4941938564,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/299190531",
+  "name": "Indira Gandhi Medical College & Hospital",
+  "lat": 21.1541868,
+  "lon": 79.0936492,
+  "node": 12183394384,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3062461484",
+  "name": "Dhruv Pathology & Molecular",
+  "lat": 21.1243628,
+  "lon": 79.0643947,
+  "node": 2705372518,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3143169967",
+  "name": "Mure Memorial Hospital",
+  "lat": 21.1450006,
+  "lon": 79.0779338,
+  "node": 12536187080,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3151964482",
+  "name": "Railway Hospital",
+  "lat": 21.1202606,
+  "lon": 79.0841004,
+  "node": 4940068151,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259587452",
+  "name": "Narcaood Hospital",
+  "lat": 21.1321946,
+  "lon": 79.0594119,
+  "node": 11987415694,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259594419",
+  "name": "Wockhardt Super Speciality Hospital",
+  "lat": 21.1364104,
+  "lon": 79.0650417,
+  "node": 4952321210,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259599209",
+  "name": "Dr Baraskar Jaiprakash",
+  "lat": 21.1320113,
+  "lon": 79.068042,
+  "node": 2705458079,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259601587",
+  "name": "Avantika Hospital",
+  "lat": 21.1340474,
+  "lon": 79.0741784,
+  "node": 297133348,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259604661",
+  "name": "Sushrut Hospital, Nagpur",
+  "lat": 21.1342574,
+  "lon": 79.07486,
+  "node": 297133348,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259608832",
+  "name": "Evista Eye Care Centre- Dr.sanjay Jaiswal-m.b.b.s., M.s., in [ophthalmology]",
+  "lat": 21.1350314,
+  "lon": 79.080249,
+  "node": 2433809937,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259609584",
+  "name": "Getwell Hospital and Research Institute",
+  "lat": 21.1360724,
+  "lon": 79.0796029,
+  "node": 298937192,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259617378",
+  "name": "Mulik Hospital",
+  "lat": 21.1359274,
+  "lon": 79.0813129,
+  "node": 2433809937,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259633595",
+  "name": "Ketki Urological Hospital",
+  "lat": 21.136975,
+  "lon": 79.079917,
+  "node": 298937189,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259633886",
+  "name": "Care Hospital, Nagpur",
+  "lat": 21.1385444,
+  "lon": 79.079175,
+  "node": 298937303,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259651470",
+  "name": "Crescent Hospital & Heart Centre",
+  "lat": 21.1312485,
+  "lon": 79.0799527,
+  "node": 297458816,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259653612",
+  "name": "Retina Eye Care Hospital",
+  "lat": 21.1331154,
+  "lon": 79.0832586,
+  "node": 297431968,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259653717",
+  "name": "Shri Krishna Hrudayalaya and Critical Care Centre",
+  "lat": 21.1310422,
+  "lon": 79.0821048,
+  "node": 13542720721,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259657598",
+  "name": "Vasan Eye Care",
+  "lat": 21.132525,
+  "lon": 79.0830226,
+  "node": 297431968,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259661617",
+  "name": "Baheti (Dr) Mukund",
+  "lat": 21.1406244,
+  "lon": 79.0853499,
+  "node": 4939954609,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259677841",
+  "name": "Dr B K Murali, Hope Hospitals",
+  "lat": 21.1411757,
+  "lon": 79.0852841,
+  "node": 7156023727,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3259678924",
+  "name": "Surelife Hospital",
+  "lat": 21.1412495,
+  "lon": 79.0857315,
+  "node": 7156023727,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3261054160",
+  "name": "Cph Centre Point Hospital and Medical Research Institute Pvt. Ltd.",
+  "lat": 21.1311745,
+  "lon": 79.0968017,
+  "node": 4940058636,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3261056793",
+  "name": "Indira Gandhi Medical College",
+  "lat": 21.1491099,
+  "lon": 79.1159505,
+  "node": 4939627467,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3261058954",
+  "name": "Central Govt Heath Scheme(CGHS) Clinic",
+  "lat": 21.1703616,
+  "lon": 79.064192,
+  "node": 4937935734,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3261063016",
+  "name": "Suraj Eye Institute Om Drishti Trust",
+  "lat": 21.1691007,
+  "lon": 79.0835882,
+  "node": 2344035057,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3261065664",
+  "name": "Dr S P Naidu",
+  "lat": 21.1572734,
+  "lon": 79.083511,
+  "node": 10258911052,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3261070276",
+  "name": "Sanjeevani Orthopaedic And Paediatric Ho",
+  "lat": 21.1224065,
+  "lon": 79.0648229,
+  "node": 297517367,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3261071404",
+  "name": "Daga Hospital",
+  "lat": 21.1530884,
+  "lon": 79.1035724,
+  "node": 3755592981,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3264660573",
+  "name": "Spandan Heart Institute & Research Centre",
+  "lat": 21.1327178,
+  "lon": 79.0783876,
+  "node": 3140321495,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3264661241",
+  "name": "Cancer Care Clinic & Hospital",
+  "lat": 21.1351842,
+  "lon": 79.0787811,
+  "node": 298937192,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3264727866",
+  "name": "Shri Ram Jeevan Chaudhari Memorial Hospital & Research Center",
+  "lat": 21.1417766,
+  "lon": 79.1037462,
+  "node": 4939714742,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3274043856",
+  "name": "Paldiwal Hospital And Polyclinic",
+  "lat": 21.14615,
+  "lon": 79.0637996,
+  "node": 3755346435,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3274045649",
+  "name": "Mangala Ketkar's",
+  "lat": 21.1451583,
+  "lon": 79.0820907,
+  "node": 11726535678,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3274046986",
+  "name": "Bhiwapurkar Eye Hospital",
+  "lat": 21.1444649,
+  "lon": 79.0833343,
+  "node": 11726535678,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3274047045",
+  "name": "suretech hospital",
+  "lat": 21.1418047,
+  "lon": 79.0842602,
+  "node": 6453679380,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3274047298",
+  "name": "Adil Homeo Heart Care Centre",
+  "lat": 21.1424351,
+  "lon": 79.0845779,
+  "node": 7156023727,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3274052433",
+  "name": "VINAYAK NETRALAYA",
+  "lat": 21.1508876,
+  "lon": 79.1026519,
+  "node": 4939695758,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3274053358",
+  "name": "Puniyani Hospital for Child and Women Care",
+  "lat": 21.1496244,
+  "lon": 79.1084506,
+  "node": 4939650294,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3274053671",
+  "name": "Sahu Hospital",
+  "lat": 21.1520709,
+  "lon": 79.1037674,
+  "node": 14075751162,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3274054979",
+  "name": "Chandak Critical Care Hospital & ICCU",
+  "lat": 21.1495333,
+  "lon": 79.1128642,
+  "node": 4939650283,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3274057374",
+  "name": "Ace Womens' Hospital",
+  "lat": 21.1486438,
+  "lon": 79.1168452,
+  "node": 6731806115,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276017197",
+  "name": "Galaxy Vidarbha Diagnostics Pvt. Ltd.",
+  "lat": 21.1355692,
+  "lon": 79.0781259,
+  "node": 7274261854,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276019764",
+  "name": "Anjani Eye Hospital",
+  "lat": 21.1349883,
+  "lon": 79.0771381,
+  "node": 7274261854,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276030036",
+  "name": "Dr Sushil Rathi (Anika Clinic)",
+  "lat": 21.1348631,
+  "lon": 79.0764497,
+  "node": 7274261854,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276032529",
+  "name": "Subramaniam Hospital",
+  "lat": 21.1343966,
+  "lon": 79.0769499,
+  "node": 7274261854,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276034689",
+  "name": "Ganju Haematology Clinic and Hospital",
+  "lat": 21.1340373,
+  "lon": 79.0755846,
+  "node": 7274261899,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276037226",
+  "name": "GI , Endoscopy and Liver clinic.SMP Hospital Dr Samir Patil",
+  "lat": 21.1345668,
+  "lon": 79.0756928,
+  "node": 297133348,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276045262",
+  "name": "Aditya Hospital Critical Care and Emergency Center",
+  "lat": 21.1336905,
+  "lon": 79.0745505,
+  "node": 7274261899,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276055621",
+  "name": "Netranjali Centre For Advanced Eye Care",
+  "lat": 21.1337221,
+  "lon": 79.073388,
+  "node": 297133348,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276063023",
+  "name": "Baraskar Multispeciality Hospital and Dialysis",
+  "lat": 21.132906,
+  "lon": 79.0708446,
+  "node": 297133349,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276074105",
+  "name": "Crescent Nursing Home and Iccu",
+  "lat": 21.1341811,
+  "lon": 79.078904,
+  "node": 298937192,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276075300",
+  "name": "KRIMS Hospital",
+  "lat": 21.1331799,
+  "lon": 79.0717727,
+  "node": 297133348,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276081461",
+  "name": "Meditrina Institute Of Medical Sciences",
+  "lat": 21.1328773,
+  "lon": 79.0707792,
+  "node": 297133349,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276084622",
+  "name": "Deshmane Hospital",
+  "lat": 21.1363446,
+  "lon": 79.0790181,
+  "node": 298937192,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276089266",
+  "name": "Nagpur Chest Center",
+  "lat": 21.1336653,
+  "lon": 79.0784165,
+  "node": 298937192,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276100493",
+  "name": "Shree Child Clinic",
+  "lat": 21.1363635,
+  "lon": 79.0799981,
+  "node": 298937192,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276100561",
+  "name": "Navjeevan Nursing Home",
+  "lat": 21.1359978,
+  "lon": 79.0798764,
+  "node": 298937192,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276101774",
+  "name": "Jasleen Eye Hospital - Nagpur",
+  "lat": 21.1380687,
+  "lon": 79.0796792,
+  "node": 298937189,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276105912",
+  "name": "Pande Memorial Hospital",
+  "lat": 21.1343817,
+  "lon": 79.0822989,
+  "node": 2433809937,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276107113",
+  "name": "WE PLUS OPTICALS",
+  "lat": 21.1385209,
+  "lon": 79.0833269,
+  "node": 297460064,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276113957",
+  "name": "Dr. Anand Pangarkar's Eye Hospital",
+  "lat": 21.1368385,
+  "lon": 79.0693717,
+  "node": 4952348505,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3276115991",
+  "name": "Wockhardt Super Speciality Hospital",
+  "lat": 21.1368952,
+  "lon": 79.0669225,
+  "node": 4952321211,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3972885657",
+  "name": "Sahu Hospital",
+  "lat": 21.1220676,
+  "lon": 79.1051559,
+  "node": 3198569221,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/3972929460",
+  "name": "Health Unit Ajni",
+  "lat": 21.125901,
+  "lon": 79.0902296,
+  "node": 1968097837,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/4421880347",
+  "name": "Prestige Hospitals Pvt Ltd",
+  "lat": 21.1689967,
+  "lon": 79.0790495,
+  "node": 5843236195,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/4435892105",
+  "name": "Kurvey Hospital",
+  "lat": 21.1300097,
+  "lon": 79.1133196,
+  "node": 4941753848,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/4534460691",
+  "name": "Unnamed hospital",
+  "lat": 21.1291174,
+  "lon": 79.0957023,
+  "node": 4940058636,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/4574596092",
+  "name": "Unnamed hospital",
+  "lat": 21.1322555,
+  "lon": 79.1155909,
+  "node": 3112454602,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/4977256995",
+  "name": "Unnamed hospital",
+  "lat": 21.1480127,
+  "lon": 79.0789312,
+  "node": 12536271117,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/5042266733",
+  "name": "Unnamed hospital",
+  "lat": 21.134479,
+  "lon": 79.0802081,
+  "node": 2433809937,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/5042266734",
+  "name": "Unnamed hospital",
+  "lat": 21.1345925,
+  "lon": 79.0802644,
+  "node": 2433809937,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/5112209478",
+  "name": "Happy Pharmacy",
+  "lat": 21.133975,
+  "lon": 79.0614898,
+  "node": 4952263445,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/6249168311",
+  "name": "Samarpan Hospital and Research Institute",
+  "lat": 21.1697967,
+  "lon": 79.1162235,
+  "node": 4938253171,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/6249232217",
+  "name": "Balwaik Multi Speciality Hospital",
+  "lat": 21.1326243,
+  "lon": 79.0992759,
+  "node": 1568003255,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/6249232326",
+  "name": "Niramaya Hospital",
+  "lat": 21.1340305,
+  "lon": 79.1008675,
+  "node": 14075751250,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/6873133686",
+  "name": "ESIS Hospital",
+  "lat": 21.1271894,
+  "lon": 79.1061206,
+  "node": 4950674426,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/6930648689",
+  "name": "Unnamed hospital",
+  "lat": 21.1353798,
+  "lon": 79.0770473,
+  "node": 7274261854,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7041042243",
+  "name": "Khalatkar Hospital",
+  "lat": 21.1304764,
+  "lon": 79.110918,
+  "node": 3112454585,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7042936001",
+  "name": "Sawarbandhe Multispeciality Hospital",
+  "lat": 21.1300825,
+  "lon": 79.1156621,
+  "node": 2433809914,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7043098839",
+  "name": "Diabetes Care and Research Centre",
+  "lat": 21.136316,
+  "lon": 79.0718201,
+  "node": 1618866759,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7043098844",
+  "name": "Central Neurological Institute",
+  "lat": 21.1351361,
+  "lon": 79.0623151,
+  "node": 4952245967,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7043117223",
+  "name": "Kamal Institute Of andro-Urology",
+  "lat": 21.1355715,
+  "lon": 79.0682983,
+  "node": 4952348509,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7043230041",
+  "name": "Laser Vision Centre",
+  "lat": 21.1337488,
+  "lon": 79.073463,
+  "node": 297133348,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7043284028",
+  "name": "Ganeshrao Kanphade Memorial Hospital",
+  "lat": 21.1350623,
+  "lon": 79.0757865,
+  "node": 297133348,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7043394544",
+  "name": "ACE Women's Hospital",
+  "lat": 21.1487614,
+  "lon": 79.1156012,
+  "node": 6731806115,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7043397907",
+  "name": "Radiance Hospital",
+  "lat": 21.1497276,
+  "lon": 79.1152176,
+  "node": 4938298498,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7043578011",
+  "name": "Sawali Ortho Hospital",
+  "lat": 21.1395091,
+  "lon": 79.0626004,
+  "node": 2705435873,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7043757655",
+  "name": "Chaitanya Maternity Home and Endoscopy Center",
+  "lat": 21.1387117,
+  "lon": 79.0600681,
+  "node": 297516238,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7044273943",
+  "name": "Mother Care Nursing Home",
+  "lat": 21.1339827,
+  "lon": 79.0754941,
+  "node": 7274261899,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7044392681",
+  "name": "Shrikhande Hospital and Research Center Pvt. Ltd.",
+  "lat": 21.1309161,
+  "lon": 79.0803355,
+  "node": 297458816,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7044542301",
+  "name": "Prestos Madan Multispeciality Hospital",
+  "lat": 21.1699581,
+  "lon": 79.1010797,
+  "node": 4956144870,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7044561554",
+  "name": "Rathi Hospital, Nagpur",
+  "lat": 21.1397243,
+  "lon": 79.0601619,
+  "node": 297516238,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7044993481",
+  "name": "Upcharya Institute Of Orthopaedic Surgery and Trauma Care Center",
+  "lat": 21.1517482,
+  "lon": 79.1000685,
+  "node": 11047676469,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7045516010",
+  "name": "Central India Cancer Research Institute",
+  "lat": 21.1330665,
+  "lon": 79.0619201,
+  "node": 11987415694,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7045705317",
+  "name": "Brijmohan Taori Memorial Hospital",
+  "lat": 21.1382257,
+  "lon": 79.0810543,
+  "node": 298937189,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7045980528",
+  "name": "Chaturvedi Surgical Hospital",
+  "lat": 21.1336181,
+  "lon": 79.0743354,
+  "node": 7274261899,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7046706669",
+  "name": "Ortho Relief Hospital and Research Centre",
+  "lat": 21.1309643,
+  "lon": 79.0799238,
+  "node": 297458816,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7047616718",
+  "name": "Green City Hospital, Nagpur",
+  "lat": 21.1679533,
+  "lon": 79.078694,
+  "node": 10811596719,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7047889343",
+  "name": "Gurunanak Eye Hospital",
+  "lat": 21.171999,
+  "lon": 79.0985531,
+  "node": 12224025307,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7047927397",
+  "name": "Naidu Hospital",
+  "lat": 21.1597766,
+  "lon": 79.0830566,
+  "node": 12224049998,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7047927498",
+  "name": "Sawarkar Multi Speciality Hospital",
+  "lat": 21.1463587,
+  "lon": 79.1018361,
+  "node": 299200843,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7047933913",
+  "name": "Dr Sawarkars Multi Speciality Clinical Care Hospital",
+  "lat": 21.1436607,
+  "lon": 79.1065662,
+  "node": 2533476191,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7047934011",
+  "name": "Patil Hospital",
+  "lat": 21.1388574,
+  "lon": 79.1035044,
+  "node": 4939714750,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7047961785",
+  "name": "Dr Gaikwad Critical Care Center Private Limited",
+  "lat": 21.1301912,
+  "lon": 79.1113257,
+  "node": 3112454585,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7048433657",
+  "name": "RNH Hospital",
+  "lat": 21.1334311,
+  "lon": 79.0830888,
+  "node": 297431968,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7048918102",
+  "name": "Abhinav Multispeciality Hospital",
+  "lat": 21.1681359,
+  "lon": 79.1010616,
+  "node": 4956139241,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7049021444",
+  "name": "Genesis Hospital & Research Centre",
+  "lat": 21.1351992,
+  "lon": 79.0786155,
+  "node": 298937192,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7049213696",
+  "name": "Mulik Hospital",
+  "lat": 21.1340553,
+  "lon": 79.0810074,
+  "node": 2433809937,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7049228374",
+  "name": "Sparsh Urology and Kidney Hospital",
+  "lat": 21.1340928,
+  "lon": 79.082099,
+  "node": 2433809937,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7049832752",
+  "name": "Shanti Mohan Hospital",
+  "lat": 21.159599,
+  "lon": 79.0778571,
+  "node": 12014224056,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7050410353",
+  "name": "Sood Eye Hospital",
+  "lat": 21.1344568,
+  "lon": 79.0770029,
+  "node": 7274261854,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7050450788",
+  "name": "Soni Hospital",
+  "lat": 21.1336675,
+  "lon": 79.0743783,
+  "node": 7274261899,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7050614316",
+  "name": "Shanta Spine Institute",
+  "lat": 21.1341579,
+  "lon": 79.0741114,
+  "node": 297133348,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7050785156",
+  "name": "Mogre Hospital",
+  "lat": 21.1257386,
+  "lon": 79.1159594,
+  "node": 14075796201,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7052034502",
+  "name": "Jeswani Multispeciality Hospital",
+  "lat": 21.1538101,
+  "lon": 79.1042038,
+  "node": 4939565758,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7052143993",
+  "name": "Late Dr Anjani Mokadam Memorial Charitable Trust Anjani Eye Hospital",
+  "lat": 21.1351079,
+  "lon": 79.0771229,
+  "node": 7274261854,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7052735609",
+  "name": "Mahajan Ortho and Surgical Hospital",
+  "lat": 21.1342054,
+  "lon": 79.0819046,
+  "node": 2433809937,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7052963440",
+  "name": "Midas Institute Of Gastroenterology",
+  "lat": 21.134029,
+  "lon": 79.0755089,
+  "node": 7274261899,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7052963452",
+  "name": "Dr. Mangala Ketkar",
+  "lat": 21.1454099,
+  "lon": 79.0818463,
+  "node": 3140321843,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7053870879",
+  "name": "Central Avenue Critical Care Hospital and Icu",
+  "lat": 21.1497345,
+  "lon": 79.1119628,
+  "node": 4939650283,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7053882311",
+  "name": "Mauli Hospital, Nagpur",
+  "lat": 21.1685836,
+  "lon": 79.079036,
+  "node": 5843236195,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7054404979",
+  "name": "Columbia Hospital and Research Centre - Nagpur",
+  "lat": 21.1335731,
+  "lon": 79.0823948,
+  "node": 2433809937,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7054956599",
+  "name": "Dr Gadge's-Om Surgical Hospital and Trauma Centre",
+  "lat": 21.1430847,
+  "lon": 79.0612985,
+  "node": 2705435873,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7062712068",
+  "name": "Golhar Spine Care and Trauma Reaserch Institute",
+  "lat": 21.1348474,
+  "lon": 79.0692241,
+  "node": 4952348509,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7063808900",
+  "name": "Dhokey Hospital",
+  "lat": 21.1250135,
+  "lon": 79.1167586,
+  "node": 14075796201,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7063899547",
+  "name": "Kothalkar Ent, Maternity and Surgical Nursing Home",
+  "lat": 21.1292993,
+  "lon": 79.1125435,
+  "node": 4941753848,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7063899558",
+  "name": "Gillurkar Multispeciality Hospital",
+  "lat": 21.1315222,
+  "lon": 79.1096624,
+  "node": 14075729055,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7063909930",
+  "name": "Suretech Hospital and Research Centre",
+  "lat": 21.1372887,
+  "lon": 79.0800371,
+  "node": 298937189,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7064155893",
+  "name": "Meher Nursing and Maternity Home",
+  "lat": 21.1389312,
+  "lon": 79.0604992,
+  "node": 297516238,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7064893613",
+  "name": "Ashwini Kidney and Dialysis Centre",
+  "lat": 21.1350222,
+  "lon": 79.0771571,
+  "node": 7274261854,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7065561579",
+  "name": "Baheti Hospital",
+  "lat": 21.1346645,
+  "lon": 79.0794256,
+  "node": 298937192,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7065899068",
+  "name": "Shushrusha Ortho and Spine Care Hospital",
+  "lat": 21.1191,
+  "lon": 79.0727676,
+  "node": 4939846191,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7066374671",
+  "name": "Arihant Surgical and Maternity Hospital",
+  "lat": 21.1529621,
+  "lon": 79.1042722,
+  "node": 3755592981,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7066374737",
+  "name": "Platina Heart Hospital",
+  "lat": 21.140486,
+  "lon": 79.0854666,
+  "node": 4939954609,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7066374813",
+  "name": "Rahate Surgical Hospital",
+  "lat": 21.149186,
+  "lon": 79.1163482,
+  "node": 4939627467,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7066505742",
+  "name": "Venkateswara Netralaya and Research Inst.",
+  "lat": 21.1387549,
+  "lon": 79.0600781,
+  "node": 297516238,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7067113578",
+  "name": "Shree Ramjiwan Choudhary Memorial Hospital and Research Centre",
+  "lat": 21.1403119,
+  "lon": 79.1022438,
+  "node": 299200897,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7067113595",
+  "name": "Harsha Childrens Hospital and Maternity Home",
+  "lat": 21.1389631,
+  "lon": 79.0605737,
+  "node": 2705435873,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7068429394",
+  "name": "Kalamkar Multi Speciality Hospital and Research Institute Pvt Ltd",
+  "lat": 21.1377492,
+  "lon": 79.0789005,
+  "node": 298937303,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7070250997",
+  "name": "Shiv Ganga Hospital and Critical Care Centre",
+  "lat": 21.1343905,
+  "lon": 79.0789475,
+  "node": 298937192,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7072544602",
+  "name": "Dr. Uddanwadikar Maternity and Eye Hospital",
+  "lat": 21.1420996,
+  "lon": 79.0625967,
+  "node": 2705435873,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7072999696",
+  "name": "Saboo Hospital",
+  "lat": 21.1492842,
+  "lon": 79.1125066,
+  "node": 3755592765,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7073765591",
+  "name": "Sparsh Clinics",
+  "lat": 21.1457408,
+  "lon": 79.0611362,
+  "node": 3755346429,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7073949839",
+  "name": "Shat Ayu Critical Care Polytrauma Centre and Multispeciality Hospital",
+  "lat": 21.1331934,
+  "lon": 79.0780275,
+  "node": 298937192,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7073949851",
+  "name": "Suraj Eye Institute - Nagpur",
+  "lat": 21.170971,
+  "lon": 79.0842837,
+  "node": 4954634660,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7073961688",
+  "name": "Avanti Institute Of Cardiology",
+  "lat": 21.13199,
+  "lon": 79.0806694,
+  "node": 297458816,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7074541552",
+  "name": "Lotus Hospitaland Research Centre and Maternity Home",
+  "lat": 21.1300424,
+  "lon": 79.1156374,
+  "node": 2433809914,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7074541565",
+  "name": "Sankalp Maternity Hospital, Nagpur",
+  "lat": 21.1398562,
+  "lon": 79.0635395,
+  "node": 297533643,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7076374565",
+  "name": "Gandhi Hospital",
+  "lat": 21.1378492,
+  "lon": 79.0784231,
+  "node": 298937303,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7079640584",
+  "name": "Rajan Neonatal Care Unit",
+  "lat": 21.1356908,
+  "lon": 79.0765931,
+  "node": 7274261854,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7079665735",
+  "name": "Vyas Hospital, Gandhibagh",
+  "lat": 21.1543273,
+  "lon": 79.1058527,
+  "node": 296923108,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7080141270",
+  "name": "Deoghare Hospital",
+  "lat": 21.1307648,
+  "lon": 79.0983157,
+  "node": 3198569201,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7080205253",
+  "name": "Suprathet Hospital",
+  "lat": 21.1386285,
+  "lon": 79.0799533,
+  "node": 298937189,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7081227376",
+  "name": "Krims Apollo Hospital",
+  "lat": 21.1328507,
+  "lon": 79.0704462,
+  "node": 297133349,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7082370191",
+  "name": "Gananam Surgical and Maternity Home",
+  "lat": 21.1340716,
+  "lon": 79.0741584,
+  "node": 297133348,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7082370261",
+  "name": "Matru Sewa Sangh",
+  "lat": 21.1367904,
+  "lon": 79.0632968,
+  "node": 4952245967,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7082738947",
+  "name": "Shree Hospitals and Critical Care Centre",
+  "lat": 21.1258567,
+  "lon": 79.1167384,
+  "node": 14075796201,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7083272480",
+  "name": "Marathe Child Care Hospital",
+  "lat": 21.132947,
+  "lon": 79.070752,
+  "node": 297133349,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7085731336",
+  "name": "Green City Multispeciality Hospital",
+  "lat": 21.1296767,
+  "lon": 79.1145059,
+  "node": 4941753856,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7086532338",
+  "name": "Hadi Children Hospital",
+  "lat": 21.1566605,
+  "lon": 79.097733,
+  "node": 4942043472,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7086558492",
+  "name": "Sunflower Hospitals",
+  "lat": 21.1362178,
+  "lon": 79.0686049,
+  "node": 4952348509,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7087131453",
+  "name": "Dashputra Hospital",
+  "lat": 21.1291592,
+  "lon": 79.1144277,
+  "node": 4941753856,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7210907275",
+  "name": "Mahajan Children Hospital",
+  "lat": 21.1375455,
+  "lon": 79.0804095,
+  "node": 298937189,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7210920507",
+  "name": "Dorlikar Orthopaedic bone Hospital",
+  "lat": 21.1566836,
+  "lon": 79.1032447,
+  "node": 4938391878,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7210920512",
+  "name": "Faheem Qureshi Hospital",
+  "lat": 21.1565637,
+  "lon": 79.1013995,
+  "node": 4938391878,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7210920517",
+  "name": "Dr. Alankar A Ramteke, Arthritis & Joint Replacement Clinic",
+  "lat": 21.1345018,
+  "lon": 79.0755145,
+  "node": 297133348,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7210920522",
+  "name": "Bodhankar Childrens Hospital",
+  "lat": 21.1337848,
+  "lon": 79.0747858,
+  "node": 7274261899,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7210950205",
+  "name": "Torney Maternity And Laparoscopy Hospital",
+  "lat": 21.1259103,
+  "lon": 79.0634899,
+  "node": 297516017,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7226796631",
+  "name": "Indira Gandhi Government Medical College and Hospital",
+  "lat": 21.15405,
+  "lon": 79.094649,
+  "node": 4939677396,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7226796683",
+  "name": "Isolation Hospital Imamwada, Nagpur",
+  "lat": 21.13521,
+  "lon": 79.090839,
+  "node": 3207655348,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203214",
+  "name": "Parlewar Hospital",
+  "lat": 21.172099,
+  "lon": 79.1010707,
+  "node": 4938120470,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203215",
+  "name": "Dik Hospital",
+  "lat": 21.144979,
+  "lon": 79.083428,
+  "node": 11726535678,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203216",
+  "name": "Kingsway Hospitals",
+  "lat": 21.154584,
+  "lon": 79.0848019,
+  "node": 7274269343,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203218",
+  "name": "Yadav Multispeciality Hospital",
+  "lat": 21.152421,
+  "lon": 79.096272,
+  "node": 3750259144,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203219",
+  "name": "Dr. Wahane Nursing Home",
+  "lat": 21.164788,
+  "lon": 79.096779,
+  "node": 1569708045,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203220",
+  "name": "Heart Hospital",
+  "lat": 21.1311587,
+  "lon": 79.0814864,
+  "node": 297458816,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203222",
+  "name": "Metro Multi Speciality Hospital",
+  "lat": 21.169052,
+  "lon": 79.0790331,
+  "node": 5843236195,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203227",
+  "name": "Green City Hospital",
+  "lat": 21.137428,
+  "lon": 79.084511,
+  "node": 297431973,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203228",
+  "name": "VIMS Hospital",
+  "lat": 21.1576155,
+  "lon": 79.0824063,
+  "node": 10258911052,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203230",
+  "name": "Life Line Hospital",
+  "lat": 21.164649,
+  "lon": 79.0972288,
+  "node": 1569708045,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203232",
+  "name": "Dapke Children Hospital",
+  "lat": 21.172195,
+  "lon": 79.097981,
+  "node": 12224025307,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203233",
+  "name": "Multani Hospital",
+  "lat": 21.158751,
+  "lon": 79.101871,
+  "node": 4954591697,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203240",
+  "name": "Nitnavare Hospital",
+  "lat": 21.1718675,
+  "lon": 79.1002384,
+  "node": 4938120470,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203241",
+  "name": "Central Hospital",
+  "lat": 21.1588822,
+  "lon": 79.0970395,
+  "node": 564878635,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203242",
+  "name": "Sai Eye Hospital",
+  "lat": 21.1389067,
+  "lon": 79.0617659,
+  "node": 2705435873,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203245",
+  "name": "Dr. Pandit Hospital",
+  "lat": 21.133639,
+  "lon": 79.0834775,
+  "node": 297431968,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203246",
+  "name": "Super Hospital",
+  "lat": 21.1329749,
+  "lon": 79.0839237,
+  "node": 4939944057,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203247",
+  "name": "Safal Hospital",
+  "lat": 21.1297589,
+  "lon": 79.0829058,
+  "node": 4939912209,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203248",
+  "name": "Arora Hospital",
+  "lat": 21.137766,
+  "lon": 79.078871,
+  "node": 298937303,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203249",
+  "name": "Dr. Yogesh Waikar Child Gastroenterologist, Hepatologist & Endoscopist",
+  "lat": 21.1371222,
+  "lon": 79.0845415,
+  "node": 297431973,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203262",
+  "name": "Colours Children Hospital",
+  "lat": 21.1380696,
+  "lon": 79.079879,
+  "node": 298937189,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203267",
+  "name": "Criticare Hospital & Research Institute",
+  "lat": 21.1405412,
+  "lon": 79.0853012,
+  "node": 4939954609,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203268",
+  "name": "Nectar Hospital",
+  "lat": 21.134379,
+  "lon": 79.075048,
+  "node": 297133348,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203269",
+  "name": "Columbia Hospital",
+  "lat": 21.136587,
+  "lon": 79.0796834,
+  "node": 298937192,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203277",
+  "name": "Orthonova Hospital",
+  "lat": 21.1524244,
+  "lon": 79.1036542,
+  "node": 3755592981,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203279",
+  "name": "Neuron Hospital",
+  "lat": 21.1380677,
+  "lon": 79.0852427,
+  "node": 297432088,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203280",
+  "name": "Nelson Mother and Child Care Hospital",
+  "lat": 21.1324857,
+  "lon": 79.0782776,
+  "node": 3140321495,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203287",
+  "name": "Wockartd Hospital",
+  "lat": 21.1340647,
+  "lon": 79.0821294,
+  "node": 2433809937,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203290",
+  "name": "Godani Multi Speciality Hospital",
+  "lat": 21.172552,
+  "lon": 79.098436,
+  "node": 12224025307,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203295",
+  "name": "Shashwat Hospital",
+  "lat": 21.1719022,
+  "lon": 79.0998343,
+  "node": 4938120470,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203298",
+  "name": "Venus Critical Care Hospital",
+  "lat": 21.1701724,
+  "lon": 79.0962576,
+  "node": 3753842698,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203300",
+  "name": "Pandit Maternity & Nursing Home",
+  "lat": 21.1327063,
+  "lon": 79.0830804,
+  "node": 297431968,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7629203301",
+  "name": "Healthcity Children Hospital",
+  "lat": 21.1348675,
+  "lon": 79.0785363,
+  "node": 298937192,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7631501025",
+  "name": "Suryodaya Multispeciality Hospital",
+  "lat": 21.1240692,
+  "lon": 79.1170231,
+  "node": 14075796201,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7631501026",
+  "name": "Anmol Maternity & Nursing Home",
+  "lat": 21.127863,
+  "lon": 79.1142545,
+  "node": 4941753868,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7631501037",
+  "name": "Shree Vighnaharta Hospital",
+  "lat": 21.1203707,
+  "lon": 79.1049421,
+  "node": 4943330191,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7631501041",
+  "name": "Panacea Multi Speciality Hospital",
+  "lat": 21.1259157,
+  "lon": 79.1046481,
+  "node": 4950676352,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7631501052",
+  "name": "Narmada Ratan Taori Hospital",
+  "lat": 21.137334,
+  "lon": 79.116817,
+  "node": 2433809961,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7631501054",
+  "name": "Sure care Multispeciality Hospital",
+  "lat": 21.122916,
+  "lon": 79.1025949,
+  "node": 3198568971,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7631501070",
+  "name": "Renuka Maternity & ENT Hospital",
+  "lat": 21.1254292,
+  "lon": 79.0593904,
+  "node": 297516017,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7631501074",
+  "name": "Deshmukh Hospital",
+  "lat": 21.118874,
+  "lon": 79.0649341,
+  "node": 2683507687,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7631501078",
+  "name": "Shreemayi Hospital",
+  "lat": 21.131205,
+  "lon": 79.110519,
+  "node": 3112454585,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7631501079",
+  "name": "Barad Hospital",
+  "lat": 21.128076,
+  "lon": 79.1140436,
+  "node": 4941753868,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7631501086",
+  "name": "Shahu Hospital",
+  "lat": 21.129294,
+  "lon": 79.113319,
+  "node": 4941753848,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7631501094",
+  "name": "Gandhi Nursing Home and Cocoon Test Tube Baby Centre",
+  "lat": 21.1491465,
+  "lon": 79.1129312,
+  "node": 3755592765,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/7631501098",
+  "name": "S D Hospital",
+  "lat": 21.138248,
+  "lon": 79.1164206,
+  "node": 2433809961,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/8805764599",
+  "name": "Mogre Children Hospital",
+  "lat": 21.1280221,
+  "lon": 79.1140026,
+  "node": 4941753868,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "node/8806023876",
+  "name": "Ganga Care Hospital Limited",
+  "lat": 21.1460772,
+  "lon": 79.0660212,
+  "node": 13299228277,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "way/1160425716",
+  "name": "Darda Hospital & Maternity Home",
+  "lat": 21.134578043476967,
+  "lon": 79.07736910413595,
+  "node": 7274261854,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "way/1241317281",
+  "name": "Harishchandra Healthcare Pvt Ltd",
+  "lat": 21.149713473978746,
+  "lon": 79.09932421035289,
+  "node": 11047676469,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "way/1272267466",
+  "name": "Unnamed hospital",
+  "lat": 21.127372471810602,
+  "lon": 79.11358956896287,
+  "node": 4941753865,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "way/1272268373",
+  "name": "Unnamed hospital",
+  "lat": 21.126722242812694,
+  "lon": 79.11376560631619,
+  "node": 3112468847,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "way/1274052830",
+  "name": "Shree Multispecialtiy Hospital",
+  "lat": 21.136093875158384,
+  "lon": 79.10817182130822,
+  "node": 9748289480,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "way/1274055024",
+  "name": "Unnamed hospital",
+  "lat": 21.13396890785763,
+  "lon": 79.10072152955412,
+  "node": 14075751250,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "way/1274055965",
+  "name": "Gastrologist and Liver Diseases",
+  "lat": 21.135955369629325,
+  "lon": 79.10817656144589,
+  "node": 9748289480,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "way/253403396",
+  "name": "Nagpur Government Hospital",
+  "lat": 21.127755382184166,
+  "lon": 79.09723255555294,
+  "node": 4940058636,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "way/388171913",
+  "name": "KMG Hospital",
+  "lat": 21.119876700000003,
+  "lon": 79.10443215000001,
+  "node": 4943330191,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "way/390612803",
+  "name": "Niyakshi Hospital",
+  "lat": 21.122712911811337,
+  "lon": 79.10469115119633,
+  "node": 3854028947,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "way/758158865",
+  "name": "Central India Institute Of Medical Sciences",
+  "lat": 21.128630097547454,
+  "lon": 79.06139747960043,
+  "node": 11987415710,
+  "source": "osm",
+  "simulated": false
+ },
+ {
+  "id": "way/958733124",
+  "name": "GMC building",
+  "lat": 21.126360833248096,
+  "lon": 79.09706793312898,
+  "node": 4940115181,
+  "source": "osm",
+  "simulated": false
+ }
+]

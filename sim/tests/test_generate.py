@@ -1,5 +1,7 @@
 from collections import Counter
 
+import networkx as nx
+
 import pytest
 
 from generate import (
@@ -9,6 +11,8 @@ from generate import (
     distance_to_river_m,
     haversine_m,
     make_fleet,
+    make_synthetic_hospitals,
+    make_synthetic_roads,
     make_zones,
 )
 
@@ -16,11 +20,11 @@ BBOX = bbox_around(CENTER, RADIUS_M)
 DEPOTS = [{"lat": 21.14, "lon": 79.08, "node": 1}, {"lat": 21.15, "lon": 79.09, "node": 2}]
 
 
-def test_bbox_is_about_10km_square() -> None:
+def test_bbox_is_about_6km_square() -> None:
     width = haversine_m((CENTER[0], BBOX.west), (CENTER[0], BBOX.east))
     height = haversine_m((BBOX.south, CENTER[1]), (BBOX.north, CENTER[1]))
-    assert width == pytest.approx(10_000, rel=0.01)
-    assert height == pytest.approx(10_000, rel=0.01)
+    assert width == pytest.approx(6_000, rel=0.01)
+    assert height == pytest.approx(6_000, rel=0.01)
 
 
 def test_twelve_zones_tile_the_bbox() -> None:
@@ -68,3 +72,29 @@ def test_fleet_requires_depots() -> None:
 
 def test_river_distance_zero_on_river() -> None:
     assert distance_to_river_m((21.1530, 79.0700)) == pytest.approx(0, abs=1)
+
+
+def test_synthetic_roads_cut_by_river_with_few_bridges() -> None:
+    g = make_synthetic_roads(BBOX, n_bridges=4)
+    assert g.graph["simulated"] is True
+    assert g.number_of_nodes() == 21 * 21
+    bridges = {tuple(sorted((u, v))) for u, v, d in g.edges(data=True) if d["bridge"]}
+    assert len(bridges) == 4
+    assert nx.is_strongly_connected(g)
+    # Without the bridges the river splits the city in two.
+    h = g.copy()
+    h.remove_edges_from([(u, v, k) for u, v, k, d in g.edges(keys=True, data=True) if d["bridge"]])
+    assert not nx.is_strongly_connected(h)
+
+
+def test_synthetic_roads_deterministic() -> None:
+    a, b = make_synthetic_roads(BBOX, seed=5), make_synthetic_roads(BBOX, seed=5)
+    assert sorted(a.edges(data=True)) == sorted(b.edges(data=True))
+
+
+def test_synthetic_hospitals_on_graph_and_simulated() -> None:
+    g = make_synthetic_roads(BBOX)
+    hospitals = make_synthetic_hospitals(g)
+    assert len(hospitals) == 6
+    for h in hospitals:
+        assert h["node"] in g and h["simulated"] is True and h["source"] == "synthetic"
