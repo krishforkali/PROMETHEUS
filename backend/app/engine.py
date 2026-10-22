@@ -78,6 +78,8 @@ class Simulation:
         self.cut_off: set[str] = set()
         self.incidents: dict[str, dict[str, Any]] = {}
         self.plan: dict[str, Any] | None = None
+        self.proposal: dict[str, Any] | None = None  # awaiting operator approval; clock holds meanwhile
+        self.auto_approve = True
         self.plan_version = 0
         self.log: list[dict[str, Any]] = []
         self._next_event = 0
@@ -92,16 +94,22 @@ class Simulation:
         self.run_until(self.time_s + dt)
 
     def run_until(self, t: float) -> None:
-        while self._next_event < len(self.timeline) and self.timeline[self._next_event]["t"] <= t:
+        """Advance to t, stopping early (clock held) if a plan proposal needs approval."""
+        while not self.proposal:
+            pending = self._next_event < len(self.timeline) and self.timeline[self._next_event]["t"] <= t
+            if not pending:
+                self._advance_to(t)
+                return
             event = self.timeline[self._next_event]
-            self._next_event += 1
             self._advance_to(event["t"])
+            if self.proposal:
+                return
+            self._next_event += 1
             self._apply(event, source="timeline")
-        self._advance_to(t)
 
     def _advance_to(self, t: float) -> None:
         """Move vehicles to time t, handling every leg arrival in time order."""
-        while True:
+        while not self.proposal:
             due = [
                 (v["legs"][0]["arrive_s"], vid)
                 for vid, v in self.vehicles.items()
@@ -109,10 +117,13 @@ class Simulation:
             ]
             if not due:
                 break
-            arrive_s, vid = min(due)
+            arrive_s = min(due)[0]
             self._move_all(arrive_s)  # others must be in place before a possible re-plan
-            self._arrive(self.vehicles[vid])
-        self._move_all(t)
+            freed = [self._arrive(self.vehicles[vid]) for t_, vid in sorted(due) if t_ == arrive_s]
+            if any(freed) and any(i["status"] == "open" for i in self.incidents.values()):
+                self._replan(", ".join(v for v in freed if v) + " free")
+        if not self.proposal:
+            self._move_all(t)
 
     def _move_all(self, t: float) -> None:
         self.time_s = max(self.time_s, t)
@@ -120,7 +131,8 @@ class Simulation:
             if v["legs"] and v["status"] != "lost":
                 v["lat"], v["lon"] = _position(v["legs"][0], self.time_s)
 
-    def _arrive(self, v: dict[str, Any]) -> None:
+    def _arrive(self, v: dict[str, Any]) -> str | None:
+        """Complete v's current leg; returns v's label if it is now free."""
         leg = v["legs"].pop(0)
         v["lat"], v["lon"] = leg["path"][-1]
         target = leg["to"]
@@ -135,10 +147,9 @@ class Simulation:
             self._record("hospital", f"{v['label']} delivered {target.get('patients', 0)} patients to {h['name']}")
         if v["legs"]:
             v["status"] = "transporting" if v["legs"][0]["to"]["kind"] == "hospital" else "en_route"
-            return
+            return None
         v["status"] = "idle"
-        if any(i["status"] == "open" for i in self.incidents.values()):
-            self._replan(f"{v['label']} free")
+        return v["label"]
 
     # ---- events ---------------------------------------------------------
 
@@ -249,12 +260,40 @@ class Simulation:
     def _hospital_nodes(self) -> list[int]:
         return [h["node"] for h in self.hospitals.values()]
 
+    def set_auto_approve(self, enabled: bool) -> None:
+        self.auto_approve = enabled
+        if enabled and self.proposal:
+            self.approve()
+
+    def approve(self) -> dict[str, Any]:
+        """Apply the pending proposal; the clock resumes from where it was held."""
+        if self.proposal is None:
+            raise ValueError("no plan proposal to approve")
+        plan, self.proposal = self.proposal, None
+        self._apply_plan(plan)
+        return self._record("approved", f"Plan v{plan['version']} approved", "manual")
+
     def _replan(self, reason: str) -> None:
+        plan = self._compute_plan(reason)
+        c = plan["changes"]
+        if self.auto_approve or not (c["added"] or c["reassigned"] or c["unassigned"]):
+            self.proposal = None
+            self._apply_plan(plan)
+            return
+        self.proposal = plan
+        self._record(
+            "proposal",
+            f"New plan v{plan['version']} proposed: {len(c['added'])} new, "
+            f"{len(c['reassigned'])} reassigned, {len(c['unassigned'])} unassigned",
+        )
+
+    def _available(self) -> list[dict[str, Any]]:
+        return [v for v in self.vehicles.values() if v["status"] in ("idle", "en_route")]
+
+    def _compute_plan(self, reason: str) -> dict[str, Any]:
+        """Dispatch over every unserved incident; does not change vehicles or incidents."""
         graph = self.active_graph()
-        available = [v for v in self.vehicles.values() if v["status"] in ("idle", "en_route")]
-        for inc in self.incidents.values():
-            if inc["status"] == "assigned":
-                inc["status"] = "open"
+        available = self._available()
         vehicles = [
             Vehicle(
                 id=v["id"],
@@ -271,24 +310,46 @@ class Simulation:
         incidents = [
             Incident(i["id"], i["lat"], i["lon"], i["node"], i["zone"], i["severity"], i["people"], i["kind"])
             for i in sorted(self.incidents.values(), key=lambda i: (i["created_s"], i["id"]))
-            if i["status"] == "open"
+            if i["status"] != "served"
         ]
         hospitals = [
             Hospital(h["id"], h["name"], h["lat"], h["lon"], h["node"], h["beds_available"])
             for h in self.hospitals.values()
         ]
-        self.plan = dispatch(vehicles, incidents, graph, hospitals, self.flooded, self.cut_off, t0=self.time_s)
+        plan = dispatch(vehicles, incidents, graph, hospitals, self.flooded, self.cut_off, t0=self.time_s)
         self.plan_version += 1
-        self.plan.update(version=self.plan_version, reason=reason)
-        if incidents:
-            self._gain["baseline"] += self.plan["baseline"]["cost"]
-            self._gain["optimised"] += self.plan["metrics"]["cost"]
+        plan.update(version=self.plan_version, reason=reason, changes=self._diff(plan))
+        return plan
+
+    def _diff(self, new: dict[str, Any]) -> dict[str, Any]:
+        """What the new plan changes relative to the active one, for unserved incidents."""
+        old = {
+            a["incident"]: a["vehicle"]
+            for a in (self.plan["assignments"] if self.plan else [])
+            if self.incidents[a["incident"]]["status"] != "served"
+        }
+        now = {a["incident"]: a["vehicle"] for a in new["assignments"]}
+        return {
+            "added": sorted(i for i in now if i not in old),
+            "reassigned": [{"incident": i, "from": old[i], "to": now[i]} for i in sorted(now) if i in old and old[i] != now[i]],
+            "unassigned": sorted(i for i in old if i not in now),
+            "unchanged": sum(1 for i in now if old.get(i) == now[i]),
+        }
+
+    def _apply_plan(self, plan: dict[str, Any]) -> None:
+        self.plan = plan
+        if plan["assignments"] or plan["dropped"]:
+            self._gain["baseline"] += plan["baseline"]["cost"]
+            self._gain["optimised"] += plan["metrics"]["cost"]
             self._gain["plans"] += 1
-        legs = {r["vehicle"]: r["legs"] for r in self.plan["routes"]}
-        for v in available:
+        legs = {r["vehicle"]: r["legs"] for r in plan["routes"]}
+        for v in self._available():
             v["legs"] = [{**leg, "cum": _cumulative(leg["path"])} for leg in legs.get(v["id"], [])]
             v["status"] = "en_route" if v["legs"] else "idle"
-        for a in self.plan["assignments"]:
+        for inc in self.incidents.values():
+            if inc["status"] == "assigned":
+                inc.update(status="open", assigned_to=None, eta_s=None)
+        for a in plan["assignments"]:
             self.incidents[a["incident"]].update(status="assigned", assigned_to=a["vehicle"], eta_s=a["eta_s"])
 
     # ---- output ---------------------------------------------------------
@@ -337,6 +398,8 @@ class Simulation:
             ],
             "incidents": sorted(self.incidents.values(), key=lambda i: i["id"]),
             "plan": self.plan,
+            "proposal": self.proposal,
+            "auto_approve": self.auto_approve,
             "metrics": self.metrics(),
             "log": self.log[-50:],
             "next_event_s": self.timeline[self._next_event]["t"] if self._next_event < len(self.timeline) else None,

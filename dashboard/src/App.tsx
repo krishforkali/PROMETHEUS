@@ -3,6 +3,7 @@ import { api } from "./api";
 import { DemoControls } from "./components/DemoControls";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { EventFeed } from "./components/EventFeed";
+import { ForecastPanel } from "./components/ForecastPanel";
 import { IncidentQueue } from "./components/IncidentQueue";
 import { KpiBar } from "./components/KpiBar";
 import { MapView } from "./components/MapView";
@@ -46,7 +47,7 @@ export default function App() {
   return (
     <div className="flex h-screen flex-col overflow-hidden bg-slate-950 text-slate-100">
       <KpiBar state={state} connection={connection} />
-      <div className="grid min-h-0 flex-1 grid-cols-[22rem_minmax(0,1fr)_21rem] grid-rows-[minmax(0,1fr)_15rem]">
+      <div className="grid min-h-0 flex-1 grid-cols-[22rem_minmax(0,1fr)_21rem] grid-rows-[minmax(0,1fr)_17rem]">
         <aside className="row-span-2 flex min-h-0 flex-col border-r border-slate-800">
           <IncidentQueue state={state} />
         </aside>
@@ -67,17 +68,23 @@ export default function App() {
               {toast}
             </div>
           )}
+          {state.proposal && (
+            <div className="absolute left-1/2 top-3 z-20 -translate-x-1/2 rounded-md bg-amber-500 px-4 py-1.5 text-sm font-bold text-black shadow-lg">
+              ⏸ Clock held: new plan v{state.proposal.version} awaiting approval
+            </div>
+          )}
           {connection !== "open" && (
             <div className="absolute inset-x-0 top-0 z-20 bg-amber-600 py-1 text-center text-sm font-semibold text-black">
               Connection lost — reconnecting…
             </div>
           )}
         </main>
-        <aside className="row-span-2 flex min-h-0 flex-col border-l border-slate-800">
+        <aside className="row-span-2 min-h-0 overflow-y-auto border-l border-slate-800">
           <ResourcesPanel state={state} />
+          <ForecastPanel state={state} />
         </aside>
         <div className="grid min-h-0 grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] border-t border-slate-800">
-          <PlanPanel state={state} />
+          <PlanPanel state={state} onError={setToast} />
           <div className="flex min-h-0 flex-col border-l border-slate-800">
             <EventFeed state={state} />
           </div>

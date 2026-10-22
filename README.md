@@ -51,6 +51,15 @@ the same `/api` proxy).
 | Add SOS wave | `POST /sim/event {"type":"add_sos_wave","count":5,"zone":"Z11"}` (seeded) |
 | Remove vehicle | `POST /sim/event {"type":"remove_vehicle","vehicle":"DRO-01"}` |
 
+| Auto-approve toggle | `POST /sim/auto-approve {"enabled": false}` |
+| Approve | `POST /sim/approve` |
+
+With auto-approve off, every re-plan that changes assignments becomes a **proposal**: the sim
+clock holds until the operator approves it, so vehicles never jump. The plan panel lists what
+changed (new, reassigned, unassigned calls), and every assignment has a **Why?** popover
+(priority rank, terrain rule, distance/time, why not the nearest vehicle, what nearest-first
+would do). Re-plans that change nothing are applied without asking.
+
 `GET /state` returns the full state; `WS /ws` pushes it every tick (0.25 s real time).
 
 ## Rebuilding data

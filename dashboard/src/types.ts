@@ -96,10 +96,33 @@ export interface Score {
   cost: number;
 }
 
+/** Backend reasons for one assignment (dispatch.explain). */
+export interface Why {
+  priority: number;
+  rank: number;
+  of: number;
+  rule: string;
+  mode: "road" | "water" | "air";
+  stop: number;
+  travel_s: number;
+  distance_m: number;
+  nearest: { vehicle: string; travel_s: number; busy_with: string[] };
+  baseline: { vehicle: string; eta_s: number } | null;
+  hospital?: { id: string; name: string; beds_free: number };
+}
+
 export interface Assignment {
   vehicle: string;
   incident: string;
   eta_s: number;
+  why: Why;
+}
+
+export interface PlanChanges {
+  added: string[];
+  reassigned: { incident: string; from: string; to: string }[];
+  unassigned: string[];
+  unchanged: number;
 }
 
 export interface Plan {
@@ -113,6 +136,7 @@ export interface Plan {
   metrics: Score;
   baseline: Score & { method: string };
   improvement_pct: { cost: number | null; avg_response: number | null; people_reached: number | null };
+  changes: PlanChanges;
 }
 
 export interface Metrics {
@@ -151,6 +175,9 @@ export interface SimState {
   vehicles: VehicleState[];
   incidents: Incident[];
   plan: Plan | null;
+  /** Re-plan awaiting operator approval; the sim clock holds while set. */
+  proposal: Plan | null;
+  auto_approve: boolean;
   metrics: Metrics;
   log: LogEntry[];
   next_event_s: number | null;

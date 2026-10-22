@@ -175,6 +175,7 @@ export function MapView({ state, zones, roads, osmTiles, blockMode, onRoadClick 
     );
 
     map.on("load", () => {
+      if (mapRef.current !== map) return; // a map torn down by StrictMode/HMR finished loading late
       map.addSource("zones", { type: "geojson", data: empty });
       map.addSource("roads", { type: "geojson", data: roads as unknown as FC });
       map.addSource("blocked", { type: "geojson", data: empty });
@@ -259,13 +260,19 @@ export function MapView({ state, zones, roads, osmTiles, blockMode, onRoadClick 
 
   useEffect(() => {
     const map = mapRef.current;
-    if (map && loaded) map.setLayoutProperty("osm", "visibility", osmTiles ? "visible" : "none");
+    if (!map || !loaded) return;
+    const apply = () => map.setLayoutProperty("osm", "visibility", osmTiles ? "visible" : "none");
+    try {
+      apply();
+    } catch {
+      map.once("idle", apply); // style briefly "not done loading" while sources update
+    }
   }, [osmTiles, loaded]);
 
   // Per-tick updates.
   useEffect(() => {
     const map = mapRef.current;
-    if (!map || !loaded) return;
+    if (!map || !loaded || !map.getSource("zones")) return;
     (map.getSource("zones") as GeoJSONSource).setData(zoneFeatures(zones, state));
     (map.getSource("blocked") as GeoJSONSource).setData(blockedFeatures(roads, state.blocked_edges));
     (map.getSource("routes") as GeoJSONSource).setData(routeFeatures(state));

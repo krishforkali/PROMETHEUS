@@ -69,3 +69,14 @@ def test_reset_restarts_scenario(sim_client: TestClient) -> None:
     assert r.status_code == 200 and r.json()["running"] is False
     s = sim_client.get("/state").json()
     assert s["time_s"] == 0 and s["incidents"] == []
+
+
+def test_approval_endpoints(sim_client: TestClient) -> None:
+    assert sim_client.post("/sim/approve").status_code == 409
+    assert sim_client.post("/sim/auto-approve", json={"enabled": False}).json()["auto_approve"] is False
+    sim_client.post("/sim/event", json={"type": "add_sos_wave", "count": 2})
+    s = sim_client.get("/state").json()
+    assert s["proposal"] is not None and s["auto_approve"] is False
+    r = sim_client.post("/sim/approve")
+    assert r.status_code == 200 and r.json()["plan_version"] == s["proposal"]["version"]
+    assert sim_client.get("/state").json()["proposal"] is None

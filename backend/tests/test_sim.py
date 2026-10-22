@@ -234,3 +234,107 @@ def test_cumulative_plan_gain_vs_baseline(sim: Simulation) -> None:
     m = sim.metrics()
     assert m["plans_compared"] > 5
     assert m["plan_gain_pct"] > 0  # waves exceed fleet capacity, so optimisation pays off
+
+
+# ---- operator approval and explanations ----------------------------------
+
+
+def test_manual_approval_holds_clock_until_approved(sim: Simulation) -> None:
+    sim.run_until(700)
+    active = sim.plan["version"]
+    sim.set_auto_approve(False)
+    sim.apply_manual({"type": "add_sos_wave", "count": 2})
+    assert sim.proposal is not None and sim.plan["version"] == active
+    new_ids = sorted(i["id"] for i in sim.incidents.values() if i["created_s"] == 700)
+    assert set(new_ids) <= set(sim.proposal["changes"]["added"]) | set(sim.proposal["dropped"])
+    held_at = sim.time_s
+    sim.run_until(held_at + 600)
+    assert sim.time_s == held_at  # clock held while the operator decides
+    sim.approve()
+    assert sim.proposal is None and sim.plan["version"] > active
+    with pytest.raises(ValueError):
+        sim.approve()
+    sim.run_until(held_at + 600)
+    # Clock resumes; it either reaches the target or holds at the next re-plan that changes something.
+    assert sim.time_s > held_at
+    if sim.time_s < held_at + 600:
+        c = sim.proposal["changes"]
+        assert c["added"] or c["reassigned"] or c["unassigned"]
+
+
+def test_newer_proposal_replaces_pending_one(sim: Simulation) -> None:
+    sim.run_until(700)
+    sim.set_auto_approve(False)
+    sim.apply_manual({"type": "add_sos_wave", "count": 2})
+    first = sim.proposal["version"]
+    busy = next(a["vehicle"] for a in sim.proposal["assignments"])
+    sim.apply_manual({"type": "remove_vehicle", "vehicle": busy})
+    assert sim.proposal["version"] == first + 1
+    assert busy not in {a["vehicle"] for a in sim.proposal["assignments"]}
+
+
+def test_enabling_auto_approve_applies_pending(sim: Simulation) -> None:
+    sim.set_auto_approve(False)
+    sim.apply_manual({"type": "add_sos_wave", "count": 1})
+    assert sim.proposal is not None
+    sim.set_auto_approve(True)
+    assert sim.proposal is None and sim.plan["assignments"]
+
+
+def test_plan_changes_report_reassignments(sim: Simulation) -> None:
+    sim.run_until(700)
+    busy = sim.plan["assignments"][0]
+    sim.apply_manual({"type": "remove_vehicle", "vehicle": busy["vehicle"]})
+    c = sim.plan["changes"]
+    moved = {r["incident"]: r for r in c["reassigned"]}
+    assert busy["incident"] in moved or busy["incident"] in c["unassigned"]
+    if busy["incident"] in moved:
+        assert moved[busy["incident"]]["from"] == busy["vehicle"]
+
+
+def test_every_assignment_explains_itself(sim: Simulation) -> None:
+    sim.run_until(3000)  # Z11 cut off by now
+    types = {v["id"]: v["type"] for v in sim.vehicles.values()}
+    for a in sim.plan["assignments"]:
+        w = a["why"]
+        assert w["priority"] == sim.incidents[a["incident"]]["severity"] * sim.incidents[a["incident"]]["people"]
+        assert 1 <= w["rank"] <= w["of"] and w["travel_s"] >= 0 and w["distance_m"] >= 0
+        assert w["nearest"]["vehicle"] in types and types[w["nearest"]["vehicle"]] == types[a["vehicle"]]
+        if w["nearest"]["vehicle"] == a["vehicle"]:
+            assert w["nearest"]["busy_with"] == []
+        if types[a["vehicle"]] == "ambulance":
+            assert w["hospital"]["beds_free"] > 0
+        if sim.incidents[a["incident"]]["zone"] == TARGET:
+            assert "cut off" in w["rule"]
+
+
+def test_no_change_replan_does_not_hold_clock(sim: Simulation) -> None:
+    sim.run_until(700)
+    sim.set_auto_approve(False)
+    rain = {"type": "rain", "mm_per_hr": sim.rain_mm_hr}
+    sim._apply(rain, source="manual")  # may reshuffle: vehicles have moved since t=600
+    if sim.proposal:
+        sim.approve()
+    version = sim.plan["version"]
+    sim._apply(rain, source="manual")  # same instant, same inputs: nothing changes
+    assert sim.proposal is None
+    assert sim.plan["version"] == version + 1
+    assert sim.plan["changes"]["unchanged"] == len(sim.plan["assignments"])
+
+
+def test_simultaneous_arrivals_replan_once(sim: Simulation) -> None:
+    sim.run_until(700)
+    sim.set_auto_approve(False)
+    # Two vehicles finishing at the same instant must produce a single re-plan.
+    idle = [v for v in sim.vehicles.values() if v["status"] == "en_route"][:2]
+    assert len(idle) == 2
+    t = sim.time_s + 5
+    z = sim.zones[0]
+    sim._add_incident({"lat": z["centroid"]["lat"], "lon": z["centroid"]["lon"], "severity": 3, "people": 5})
+    for v in idle:
+        v["legs"] = [{**v["legs"][0], "depart_s": sim.time_s, "arrive_s": t}]
+    version = sim.plan_version
+    sim.run_until(t)
+    assert sim.plan_version == version + 1
+    latest = sim.proposal or sim.plan
+    assert all(v["label"] in latest["reason"] for v in idle)

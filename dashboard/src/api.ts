@@ -25,6 +25,8 @@ export const api = {
   reset: () => post<Clock>("/sim/reset"),
   speed: (speed: number) => post<Clock>("/sim/speed", { speed }),
   event: (event: SimEvent) => post<{ plan_version: number }>("/sim/event", event),
+  approve: () => post<{ plan_version: number }>("/sim/approve"),
+  autoApprove: (enabled: boolean) => post<{ auto_approve: boolean }>("/sim/auto-approve", { enabled }),
 };
 
 export function wsUrl(): string {

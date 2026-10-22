@@ -114,6 +114,29 @@ async def sim_event(body: EventBody, request: Request) -> dict[str, Any]:
     return {"event": entry, "plan_version": runner.sim.plan_version}
 
 
+class AutoApproveBody(BaseModel):
+    enabled: bool
+
+
+@app.post("/sim/approve")
+async def sim_approve(request: Request) -> dict[str, Any]:
+    runner = get_runner(request.app)
+    try:
+        entry = runner.sim.approve()
+    except ValueError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+    await runner.broadcast()
+    return {"event": entry, "plan_version": runner.sim.plan["version"] if runner.sim.plan else None}
+
+
+@app.post("/sim/auto-approve")
+async def sim_auto_approve(body: AutoApproveBody, request: Request) -> dict[str, Any]:
+    runner = get_runner(request.app)
+    runner.sim.set_auto_approve(body.enabled)
+    await runner.broadcast()
+    return {"auto_approve": runner.sim.auto_approve}
+
+
 @app.get("/state")
 def state(request: Request) -> dict[str, Any]:
     return get_runner(request.app).state()

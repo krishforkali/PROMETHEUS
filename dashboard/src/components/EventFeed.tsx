@@ -12,6 +12,8 @@ const TYPE_STYLE: Record<string, string> = {
   rain: "text-sky-300",
   served: "text-emerald-300",
   hospital: "text-teal-300",
+  proposal: "font-semibold text-amber-300",
+  approved: "text-emerald-400",
 };
 
 export function EventFeed({ state }: { state: SimState }) {

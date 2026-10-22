@@ -262,6 +262,59 @@ def _leg_path(graph: nx.Graph, v: Vehicle, a: LatLon, a_node: int, b: LatLon, b_
     return [a] + path_coords(graph, nodes)
 
 
+def terrain_reason(inc: Incident, flooded: set[str], cut_off: set[str]) -> str:
+    """Plain-language version of eligible_types for the 'Why?' popover."""
+    if inc.zone in cut_off:
+        extra = " or boats" if inc.zone in flooded else ""
+        return f"{inc.zone} is cut off from every hospital by road, so only drones{extra} can reach it"
+    if inc.zone in flooded:
+        return f"{inc.zone} is flooded, so only boats can reach it"
+    if inc.kind == "medical":
+        return "Medical call on a connected road: ambulance, which then takes patients to a hospital with free beds"
+    return "Supplies call on a connected road: ration truck"
+
+
+def explain(p: Problem, routes: Routes, baseline: Routes, roads: RoadDistances, t0: float,
+            flooded: set[str], cut_off: set[str]) -> dict[str, dict[str, Any]]:
+    """Per-incident reasons: priority rank, terrain rule, travel, nearest vehicle, baseline choice."""
+    vidx = {v.id: k for k, v in enumerate(p.vehicles)}
+    base_by_inc = {i: (vid, t) for vid, seq in baseline.items() for i, t in zip(seq, arrivals(p, vidx[vid], seq))}
+    planned = [i for seq in routes.values() for i in seq]
+    rank = {i: r + 1 for r, i in enumerate(sorted(planned, key=lambda i: (-p.incidents[i].priority, i)))}
+    out: dict[str, dict[str, Any]] = {}
+    for vid, seq in routes.items():
+        vi = vidx[vid]
+        v = p.vehicles[vi]
+        here, here_pt, here_node = 0, (v.lat, v.lon), v.node
+        for stop, i in enumerate(seq, 1):
+            inc = p.incidents[i]
+            metres = roads.metres(here_node, inc.node) if v.mode == "road" else haversine_m(here_pt, (inc.lat, inc.lon))
+            near_t, near_id = min(
+                (p.vehicles[j].ready_s + p.times[j][0][i + 1], p.vehicles[j].id)
+                for j in range(len(p.vehicles))
+                if i in p.eligible[j]
+            )
+            base = base_by_inc.get(i)
+            out[inc.id] = {
+                "priority": inc.priority,
+                "rank": rank[i],
+                "of": len(planned),
+                "rule": terrain_reason(inc, flooded, cut_off),
+                "mode": v.mode,
+                "stop": stop,
+                "travel_s": p.times[vi][here][i + 1],
+                "distance_m": round(metres or 0),
+                "nearest": {
+                    "vehicle": near_id,
+                    "travel_s": near_t,
+                    "busy_with": [p.incidents[k].id for k in routes.get(near_id, [])] if near_id != vid else [],
+                },
+                "baseline": {"vehicle": base[0], "eta_s": t0 + base[1]} if base else None,
+            }
+            here, here_pt, here_node = i + 1, (inc.lat, inc.lon), inc.node
+    return out
+
+
 def _pct(better: float | None, worse: float | None, higher_is_better: bool = False) -> float | None:
     if better is None or worse is None or worse == 0:
         return None
@@ -287,6 +340,7 @@ def dispatch(
     if optimised is not None and score(p, optimised)["cost"] <= base_score["cost"]:
         routes, solver = optimised, "or-tools"
     opt_score = score(p, routes)
+    why = explain(p, routes, baseline, roads, t0, flooded, cut_off)
 
     beds = {h.id: h.beds_available for h in hospitals}
     assignments, plan_routes = [], []
@@ -305,7 +359,7 @@ def dispatch(
                     "path": _leg_path(graph, v, here, here_node, (inc.lat, inc.lon), inc.node),
                 }
             )
-            assignments.append({"vehicle": v.id, "incident": inc.id, "eta_s": t0 + arrive})
+            assignments.append({"vehicle": v.id, "incident": inc.id, "eta_s": t0 + arrive, "why": why[inc.id]})
             here, here_node, depart = (inc.lat, inc.lon), inc.node, arrive
         if v.type == "ambulance":
             found = nearest_hospital(roads, here_node, hospitals, beds)
@@ -313,6 +367,7 @@ def dispatch(
                 h, metres = found
                 patients = min(v.capacity, p.incidents[seq[-1]].people, beds[h.id])
                 beds[h.id] -= patients
+                assignments[-1]["why"]["hospital"] = {"id": h.id, "name": h.name, "beds_free": beds[h.id] + patients}
                 arrive = depart + math.ceil(metres / v.speed_mps)
                 legs.append(
                     {
