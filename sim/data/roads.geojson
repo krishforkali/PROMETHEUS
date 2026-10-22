@@ -27398,7 +27398,7 @@
     "key": 0,
     "length_m": 659.3,
     "highway": "secondary",
-    "name": "Nandanvan Main Road,Chhota Tajbagh Road",
+    "name": "Chhota Tajbagh Road,Nandanvan Main Road",
     "bridge": false,
     "simulated": false
    }
@@ -54954,7 +54954,7 @@
     "key": 0,
     "length_m": 278.0,
     "highway": "trunk",
-    "name": "Old Bhandara Road Flyover,Kingsway Road;Bhandara Road",
+    "name": "Kingsway Road;Bhandara Road,Old Bhandara Road Flyover",
     "bridge": false,
     "simulated": false
    }
@@ -70526,7 +70526,7 @@
     "key": 0,
     "length_m": 318.4,
     "highway": "secondary",
-    "name": "Bus stand road,Bus Stand Road",
+    "name": "Bus Stand Road,Bus stand road",
     "bridge": true,
     "simulated": false
    }

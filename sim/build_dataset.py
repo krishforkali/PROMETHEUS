@@ -28,6 +28,7 @@ from generate import (
     make_synthetic_roads,
     make_zones,
 )
+from hospitals import add_bed_capacity, select_hospitals
 
 DEFAULT_OUT = Path(__file__).parent / "data"
 OVERPASS_URL = "https://maps.mail.ru/osm/tools/overpass/api"
@@ -66,31 +67,60 @@ def with_retries(
     raise AssertionError("unreachable")
 
 
+def sort_list_attrs(graph: nx.MultiDiGraph) -> nx.MultiDiGraph:
+    """osmnx merges multi-valued tags in set (hash) order; sort them so output is reproducible."""
+    for _, _, data in graph.edges(data=True):
+        for key, value in data.items():
+            if isinstance(value, list):
+                data[key] = sorted(value, key=str)
+    return graph
+
+
 def download_roads(center: tuple[float, float], radius_m: int) -> nx.MultiDiGraph:
     ox.settings.requests_timeout = ROADS_TIMEOUT_S
-    return ox.graph_from_point(
+    graph = ox.graph_from_point(
         center, dist=radius_m, dist_type="bbox", custom_filter=MAJOR_ROADS_FILTER, simplify=True
     )
+    return sort_list_attrs(graph)
 
 
 def download_hospitals(center: tuple[float, float], radius_m: int, graph: nx.MultiDiGraph) -> list[dict[str, Any]]:
     ox.settings.requests_timeout = HOSPITALS_TIMEOUT_S
     gdf = ox.features_from_point(center, tags={"amenity": "hospital"}, dist=radius_m)
-    hospitals: list[dict[str, Any]] = []
+    areas = gdf.geometry.to_crs(gdf.estimate_utm_crs()).area
+    raw: list[dict[str, Any]] = []
     for (osm_type, osm_id), row in gdf.iterrows():
         pt = row.geometry.centroid
-        hospitals.append(
+        raw.append(
             {
                 "id": f"{osm_type}/{osm_id}",
-                "name": row.get("name") if isinstance(row.get("name"), str) else "Unnamed hospital",
+                "name": _attr_str(row.get("name")),
                 "lat": pt.y,
                 "lon": pt.x,
-                "node": int(ox.distance.nearest_nodes(graph, pt.x, pt.y)),
-                "source": "osm",
-                "simulated": False,
+                "amenity": _attr_str(row.get("amenity")),
+                "healthcare": _attr_str(row.get("healthcare")),
+                "emergency": _attr_str(row.get("emergency")),
+                "beds": _attr_str(row.get("beds")),
+                "area_m2": round(float(areas.loc[(osm_type, osm_id)]), 1),
             }
         )
-    return sorted(hospitals, key=lambda h: h["id"])
+    selected = select_hospitals(raw)
+    print(f"  {len(raw)} raw OSM hospitals -> {len(selected)} after filtering")
+    nodes = ox.distance.nearest_nodes(graph, [h["lon"] for h in selected], [h["lat"] for h in selected])
+    return [
+        {
+            "id": h["id"],
+            "name": h["name"],
+            "lat": h["lat"],
+            "lon": h["lon"],
+            "node": int(n),
+            "emergency": h["emergency"] == "yes",
+            "area_m2": h["area_m2"],
+            "source": "osm",
+            "simulated": False,
+        }
+        for h, n in zip(selected, nodes)
+    ]
 
 
 def _attr_str(value: Any) -> str | None:
@@ -161,6 +191,7 @@ def fetch_network(seed: int, offline: bool) -> tuple[nx.MultiDiGraph, list[dict[
             print("  Overpass unavailable - falling back to SIMULATED hospitals")
     if hospitals is None:
         hospitals = make_synthetic_hospitals(graph, seed=seed)
+    hospitals = add_bed_capacity(hospitals, seed=seed)
     print(f"  {len(hospitals)} hospitals ({sources['hospitals']})")
     return graph, hospitals, sources
 
@@ -177,6 +208,7 @@ def build(out: Path, seed: int = SEED, offline: bool = False) -> dict[str, str]:
     zones = make_zones(bbox, seed=seed)
     fleet = make_fleet(depot_candidates(graph, hospitals, seed), seed=seed)
 
+    graph.graph.pop("created_date", None)  # timestamp would make the file differ every run
     ox.save_graphml(graph, out / "roads.graphml")
     write_json(out / "roads.geojson", roads_to_geojson(graph, simulated=sources["roads"] != "osm"))
     write_json(out / "hospitals.json", hospitals)

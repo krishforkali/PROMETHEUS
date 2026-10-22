@@ -42,4 +42,6 @@ def test_real_dataset(monkeypatch: pytest.MonkeyPatch) -> None:
     assert len(zones) == 12 and all(z["simulated"] for z in zones)
     assert Counter(v["type"] for v in fleet) == {"ambulance": 6, "boat": 3, "drone": 2, "truck": 3}
     assert roads["type"] == "FeatureCollection" and len(roads["features"]) > 100
-    assert isinstance(hospitals, list)
+    assert 1 <= len(hospitals) <= 15
+    assert all(h["name"] and h["capacity"]["simulated"] for h in hospitals)
+    assert len({h["id"] for h in hospitals}) == len(hospitals)

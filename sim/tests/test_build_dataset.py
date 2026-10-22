@@ -46,7 +46,7 @@ def test_build_falls_back_to_synthetic_when_overpass_fails(tmp_path: Path, monke
     assert roads["features"] and all(f["properties"]["simulated"] for f in roads["features"])
     assert sum(f["properties"]["bridge"] for f in roads["features"]) == 8  # 4 bridges, both directions
     hospitals = json.loads((tmp_path / "hospitals.json").read_text())
-    assert all(h["simulated"] for h in hospitals)
+    assert all(h["simulated"] and h["capacity"]["simulated"] for h in hospitals)
     meta = json.loads((tmp_path / "meta.json").read_text())
     assert meta["sources"]["roads"] == "synthetic"
 
@@ -57,3 +57,15 @@ def test_offline_flag_skips_download(tmp_path: Path, monkeypatch: pytest.MonkeyP
 
     monkeypatch.setattr(build_dataset, "download_roads", must_not_call)
     assert build_dataset.build(tmp_path, offline=True)["roads"] == "synthetic"
+
+
+def test_sort_list_attrs_makes_merged_tags_stable() -> None:
+    import networkx as nx
+
+    g = nx.MultiDiGraph()
+    g.add_edge(1, 2, name=["Ram Jhula Bridge", "Old Bhandara Road Flyover"], osmid=[30, 10], length=5.0)
+    build_dataset.sort_list_attrs(g)
+    data = g.edges[1, 2, 0]
+    assert data["name"] == ["Old Bhandara Road Flyover", "Ram Jhula Bridge"]
+    assert data["osmid"] == [10, 30]
+    assert data["length"] == 5.0
