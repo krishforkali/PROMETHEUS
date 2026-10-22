@@ -50,7 +50,6 @@ the same `/api` proxy).
 | Block road | `POST /sim/event {"type":"block_road","failure_point":"FP1"}`, or pick a road on the map (`u`, `v`) |
 | Add SOS wave | `POST /sim/event {"type":"add_sos_wave","count":5,"zone":"Z11"}` (seeded) |
 | Remove vehicle | `POST /sim/event {"type":"remove_vehicle","vehicle":"DRO-01"}` |
-
 | Auto-approve toggle | `POST /sim/auto-approve {"enabled": false}` |
 | Approve | `POST /sim/approve` |
 
