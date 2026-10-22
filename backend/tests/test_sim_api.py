@@ -60,3 +60,12 @@ def test_websocket_pushes_state_each_tick(sim_client: TestClient) -> None:
         tick = ws.receive_json()
         assert tick["time_s"] > first["time_s"] and tick["clock"]["running"] is True
         sim_client.post("/sim/pause")
+
+
+def test_reset_restarts_scenario(sim_client: TestClient) -> None:
+    sim_client.post("/sim/event", json={"type": "add_sos_wave", "count": 3})
+    assert len(sim_client.get("/state").json()["incidents"]) == 3
+    r = sim_client.post("/sim/reset")
+    assert r.status_code == 200 and r.json()["running"] is False
+    s = sim_client.get("/state").json()
+    assert s["time_s"] == 0 and s["incidents"] == []

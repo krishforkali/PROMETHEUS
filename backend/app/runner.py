@@ -16,7 +16,7 @@ from app.engine import Simulation
 DEFAULT_SCENARIO = Path(__file__).resolve().parents[1] / "sim" / "scenario.json"
 DEFAULT_SPEED = 30.0  # simulated seconds per real second
 MAX_SPEED = 600.0
-TICK_REAL_S = 1.0
+TICK_REAL_S = 0.25  # short ticks keep vehicle motion smooth at high speed
 
 
 def scenario_path() -> Path:
@@ -30,6 +30,7 @@ def new_simulation() -> Simulation:
 
 class SimRunner:
     def __init__(self, factory: Callable[[], Simulation] = new_simulation, tick_real_s: float = TICK_REAL_S) -> None:
+        self.factory = factory
         self.sim = factory()
         self.running = False
         self.speed = DEFAULT_SPEED
@@ -50,6 +51,11 @@ class SimRunner:
 
     def pause(self) -> None:
         self.running = False
+
+    def reset(self) -> None:
+        """Pause and restart the scenario from t=0 (speed is kept)."""
+        self.pause()
+        self.sim = self.factory()
 
     def set_speed(self, speed: float) -> None:
         if not 0 < speed <= MAX_SPEED:

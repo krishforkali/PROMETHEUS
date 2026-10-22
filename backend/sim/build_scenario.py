@@ -124,6 +124,7 @@ def failure_points(g: nx.Graph, zones: list[dict[str, Any]], target: str, cut: l
         out.append(
             {
                 "id": f"FP{n}",
+                "label": f"Underpass {chr(ord('A') + n - 1)}",
                 "name": " / ".join(names) if names else f"Unnamed road near {target}",
                 "lat": lat,
                 "lon": lon,

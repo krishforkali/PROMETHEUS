@@ -196,3 +196,41 @@ def test_bad_manual_events_rejected(sim: Simulation, event: dict[str, Any]) -> N
 
 def test_scenario_file_location() -> None:
     assert Path(DEFAULT_SCENARIO).exists()
+
+
+def test_sos_wave_is_seeded_and_replans() -> None:
+    a, b = new_simulation(), new_simulation()
+    for s in (a, b):
+        s.apply_manual({"type": "add_sos_wave", "count": 4})
+    assert [i["lat"] for i in a.incidents.values()] == [i["lat"] for i in b.incidents.values()]
+    assert len(a.incidents) == 4 and all(i["source"] == "dashboard" for i in a.incidents.values())
+    s = new_simulation()
+    s.apply_manual({"type": "add_sos_wave", "count": 3, "zone": "Z02"})
+    assert {i["zone"] for i in s.incidents.values()} == {"Z02"}
+    with pytest.raises(ValueError):
+        s.apply_manual({"type": "add_sos_wave", "count": 99})
+
+
+def test_state_has_dashboard_fields(sim: Simulation) -> None:
+    sim.run_until(700)
+    st = sim.state()
+    assert st["metrics"]["people_at_risk"] > 0
+    assert {fp["label"] for fp in st["failure_points"]} == {"Underpass A", "Underpass B", "Underpass C", "Underpass D"}
+    moving = [v for v in st["vehicles"] if v["status"] == "en_route"]
+    assert moving and all(v["route"][0] == (v["lat"], v["lon"]) and len(v["route"]) >= 2 for v in moving)
+    assert next(v for v in st["vehicles"] if v["id"] == "DRO-02")["label"] == "Drone 2"
+
+
+def test_log_names_things_readably(sim: Simulation) -> None:
+    sim.run_until(2700)
+    messages = [e["message"] for e in sim.log]
+    assert "Underpass A failed, re-planning" in messages
+    assert "Drone 1 lost, re-planning" in messages
+
+
+def test_cumulative_plan_gain_vs_baseline(sim: Simulation) -> None:
+    assert sim.metrics()["plan_gain_pct"] is None
+    sim.run_until(3600)
+    m = sim.metrics()
+    assert m["plans_compared"] > 5
+    assert m["plan_gain_pct"] > 0  # waves exceed fleet capacity, so optimisation pays off

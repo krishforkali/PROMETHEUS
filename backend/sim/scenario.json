@@ -127,6 +127,7 @@
  "failure_points": [
   {
    "id": "FP1",
+   "label": "Underpass A",
    "name": "Panchpaoli Flyover",
    "lat": 21.1512225,
    "lon": 79.10023355000001,
@@ -147,6 +148,7 @@
   },
   {
    "id": "FP2",
+   "label": "Underpass B",
    "name": "Unnamed road near Z11",
    "lat": 21.1576687,
    "lon": 79.0908298,
@@ -163,6 +165,7 @@
   },
   {
    "id": "FP3",
+   "label": "Underpass C",
    "name": "Mangalwari Bazaar Marg",
    "lat": 21.1649125,
    "lon": 79.08625775,
@@ -183,6 +186,7 @@
   },
   {
    "id": "FP4",
+   "label": "Underpass D",
    "name": "Unnamed road near Z11",
    "lat": 21.156771550000002,
    "lon": 79.1043366,

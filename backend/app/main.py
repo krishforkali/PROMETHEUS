@@ -54,7 +54,7 @@ class SpeedBody(BaseModel):
 
 
 class EventBody(BaseModel):
-    type: Literal["block_road", "add_sos", "remove_vehicle"]
+    type: Literal["block_road", "add_sos", "add_sos_wave", "remove_vehicle"]
     failure_point: str | None = None
     u: int | None = None
     v: int | None = None
@@ -64,6 +64,8 @@ class EventBody(BaseModel):
     people: int | None = None
     kind: str = "medical"
     vehicle: str | None = None
+    count: int | None = None
+    zone: str | None = None
 
 
 @app.post("/sim/start")
@@ -77,6 +79,14 @@ async def sim_start(request: Request) -> dict[str, Any]:
 def sim_pause(request: Request) -> dict[str, Any]:
     runner = get_runner(request.app)
     runner.pause()
+    return runner.status()
+
+
+@app.post("/sim/reset")
+async def sim_reset(request: Request) -> dict[str, Any]:
+    runner = get_runner(request.app)
+    runner.reset()
+    await runner.broadcast()
     return runner.status()
 
 

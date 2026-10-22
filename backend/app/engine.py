@@ -7,6 +7,7 @@ runner, so the same scenario always produces the same states.
 from __future__ import annotations
 
 import bisect
+import random
 from typing import Any
 
 from app.dispatch import Hospital, Incident, Vehicle, dispatch
@@ -23,9 +24,16 @@ from app.network import (
 )
 
 MODE_BY_TERRAIN = {"road": "road", "water": "water", "air": "air"}
+TYPE_LABEL = {"ambulance": "Ambulance", "boat": "Boat", "drone": "Drone", "truck": "Truck"}
 SOS_SEVERITY = range(1, 6)
 SOS_KINDS = {"medical", "supplies"}
+MAX_WAVE = 20
 LOG_LIMIT = 200
+
+
+def vehicle_label(vid: str, vtype: str) -> str:
+    """'DRO-02' -> 'Drone 2'."""
+    return f"{TYPE_LABEL.get(vtype, vtype.title())} {int(vid.rsplit('-', 1)[-1])}"
 
 
 class Simulation:
@@ -50,6 +58,7 @@ class Simulation:
         self.vehicles = {
             v["id"]: {
                 "id": v["id"],
+                "label": vehicle_label(v["id"], v["type"]),
                 "type": v["type"],
                 "mode": MODE_BY_TERRAIN[v["terrain"]],
                 "speed_mps": v["speed_kmh"] / 3.6,
@@ -73,6 +82,8 @@ class Simulation:
         self.log: list[dict[str, Any]] = []
         self._next_event = 0
         self._sos_seq = 0
+        self._rng = random.Random(scenario.get("seed", 0))  # manual SOS waves
+        self._gain = {"baseline": 0, "optimised": 0, "plans": 0}  # cumulative over re-plans
         self.run_until(0.0)
 
     # ---- clock ----------------------------------------------------------
@@ -117,17 +128,17 @@ class Simulation:
             inc = self.incidents[target["id"]]
             if inc["status"] != "served":
                 inc.update(status="served", served_s=leg["arrive_s"], served_by=v["id"])
-                self._record("served", f"{v['id']} reached {inc['id']} ({inc['people']} people)")
+                self._record("served", f"{v['label']} reached {inc['id']} ({inc['people']} people)")
         else:
             h = self.hospitals[target["id"]]
             h["beds_available"] = max(0, h["beds_available"] - target.get("patients", 0))
-            self._record("hospital", f"{v['id']} delivered {target.get('patients', 0)} patients to {h['name']}")
+            self._record("hospital", f"{v['label']} delivered {target.get('patients', 0)} patients to {h['name']}")
         if v["legs"]:
             v["status"] = "transporting" if v["legs"][0]["to"]["kind"] == "hospital" else "en_route"
             return
         v["status"] = "idle"
         if any(i["status"] == "open" for i in self.incidents.values()):
-            self._replan(f"{v['id']} free")
+            self._replan(f"{v['label']} free")
 
     # ---- events ---------------------------------------------------------
 
@@ -144,14 +155,15 @@ class Simulation:
             msg = f"rain {self.rain_mm_hr:g} mm/hr" + (f"; flooding {sorted(newly)}" if newly else "")
         elif kind in ("fail", "block_road"):
             msg = self._block(event)
-        elif kind in ("sos_wave", "add_sos"):
-            new = [self._add_incident(spec) for spec in event.get("incidents", [event])]
+        elif kind in ("sos_wave", "add_sos", "add_sos_wave"):
+            specs = self._random_wave(event) if kind == "add_sos_wave" else event.get("incidents", [event])
+            new = [self._add_incident(spec) for spec in specs]
             msg = f"{len(new)} SOS: " + ", ".join(f"{i['id']}@{i['zone']}" for i in new)
         elif kind in ("vehicle_lost", "remove_vehicle"):
             msg = self._lose_vehicle(event.get("vehicle", ""))
         else:
             raise ValueError(f"unknown event type {kind!r}")
-        entry = self._record(kind, msg, source)
+        entry = self._record(kind, msg + ", re-planning", source)
         self._replan(kind)
         return entry
 
@@ -162,7 +174,7 @@ class Simulation:
                 raise ValueError(f"unknown failure point {fp_id!r}")
             self.failed.add(fp_id)
             edges = [edge_key(u, v) for u, v in self.failure_points[fp_id]["edges"]]
-            label = f"{fp_id} failed"
+            label = f"{self.failure_points[fp_id]['label']} failed"
         else:
             u, v = event.get("u"), event.get("v")
             if u is None or v is None or not self.graph.has_edge(u, v):
@@ -196,6 +208,30 @@ class Simulation:
         self.incidents[inc["id"]] = inc
         return inc
 
+    def _random_wave(self, event: dict[str, Any]) -> list[dict[str, Any]]:
+        """Seeded SOS wave for the demo button; optionally all in one zone."""
+        count = int(event.get("count", 5))
+        zone = event.get("zone")
+        if not 1 <= count <= MAX_WAVE:
+            raise ValueError(f"wave count must be 1-{MAX_WAVE}")
+        candidates = sorted(z for z, nodes in self.zone_nodes.items() if nodes)
+        if zone is not None and zone not in candidates:
+            raise ValueError(f"unknown zone {zone!r}")
+        specs = []
+        for _ in range(count):
+            node = self._rng.choice(self.zone_nodes[zone or self._rng.choice(candidates)])
+            specs.append(
+                {
+                    "lat": self.graph.nodes[node]["lat"],
+                    "lon": self.graph.nodes[node]["lon"],
+                    "severity": self._rng.randint(1, 5),
+                    "people": self._rng.randint(2, 40),
+                    "kind": self._rng.choice(["medical", "medical", "supplies"]),
+                    "source": "dashboard",
+                }
+            )
+        return specs
+
     def _lose_vehicle(self, vid: str) -> str:
         if vid not in self.vehicles:
             raise ValueError(f"unknown vehicle {vid!r}")
@@ -203,7 +239,7 @@ class Simulation:
         if v["status"] == "lost":
             raise ValueError(f"{vid} already lost")
         v.update(status="lost", legs=[])
-        return f"{vid} lost"
+        return f"{v['label']} lost"
 
     # ---- planning -------------------------------------------------------
 
@@ -244,6 +280,10 @@ class Simulation:
         self.plan = dispatch(vehicles, incidents, graph, hospitals, self.flooded, self.cut_off, t0=self.time_s)
         self.plan_version += 1
         self.plan.update(version=self.plan_version, reason=reason)
+        if incidents:
+            self._gain["baseline"] += self.plan["baseline"]["cost"]
+            self._gain["optimised"] += self.plan["metrics"]["cost"]
+            self._gain["plans"] += 1
         legs = {r["vehicle"]: r["legs"] for r in self.plan["routes"]}
         for v in available:
             v["legs"] = [{**leg, "cum": _cumulative(leg["path"])} for leg in legs.get(v["id"], [])]
@@ -261,12 +301,17 @@ class Simulation:
     def metrics(self) -> dict[str, Any]:
         served = [i for i in self.incidents.values() if i["status"] == "served"]
         waits = [i["served_s"] - i["created_s"] for i in served]
+        zones = zone_forecast(self.zones, self.vulnerability, self.rain_mm_hr, self.flooded, self.cut_off)
+        g = self._gain
         return {
+            "people_at_risk": round(sum(z["population"] * z["risk"] for z in zones)),
             "incidents": len(self.incidents),
             "served": len(served),
             "open": sum(i["status"] != "served" for i in self.incidents.values()),
             "people_reached": sum(i["people"] for i in served),
             "avg_response_s": round(sum(waits) / len(waits), 1) if waits else None,
+            "plan_gain_pct": round((g["baseline"] - g["optimised"]) / g["baseline"] * 100, 1) if g["baseline"] else None,
+            "plans_compared": g["plans"],
         }
 
     def state(self) -> dict[str, Any]:
@@ -277,7 +322,7 @@ class Simulation:
             "zones": zone_forecast(self.zones, self.vulnerability, self.rain_mm_hr, self.flooded, self.cut_off),
             "failure_points": [
                 {
-                    **{k: fp[k] for k in ("id", "name", "lat", "lon", "zone", "edges")},
+                    **{k: fp[k] for k in ("id", "label", "name", "lat", "lon", "zone", "edges")},
                     "risk": risk(self.rain_mm_hr, self.elevation[fp["zone"]], fp["river_distance_m"]),
                     "failed": fp["id"] in self.failed,
                 }
@@ -286,8 +331,8 @@ class Simulation:
             "blocked_edges": sorted(self.blocked),
             "hospitals": list(self.hospitals.values()),
             "vehicles": [
-                {k: v[k] for k in ("id", "type", "status", "lat", "lon")}
-                | {"target": v["legs"][0]["to"] if v["legs"] else None}
+                {k: v[k] for k in ("id", "label", "type", "status", "lat", "lon", "capacity")}
+                | {"target": v["legs"][0]["to"] if v["legs"] else None, "route": self._remaining_route(v)}
                 for v in self.vehicles.values()
             ],
             "incidents": sorted(self.incidents.values(), key=lambda i: i["id"]),
@@ -298,6 +343,19 @@ class Simulation:
         }
 
 
+    def _remaining_route(self, v: dict[str, Any]) -> list[LatLon]:
+        """Current position plus the untravelled part of every remaining leg."""
+        if not v["legs"] or v["status"] == "lost":
+            return []
+        first = v["legs"][0]
+        done = _travelled(first, self.time_s)
+        out: list[LatLon] = [(v["lat"], v["lon"])]
+        out += [tuple(p) for p, c in zip(first["path"], first["cum"]) if c > done]  # type: ignore[misc]
+        for leg in v["legs"][1:]:
+            out += [tuple(p) for p in leg["path"]]  # type: ignore[misc]
+        return out
+
+
 def _cumulative(path: list[LatLon]) -> list[float]:
     out = [0.0]
     for a, b in zip(path, path[1:]):
@@ -305,12 +363,17 @@ def _cumulative(path: list[LatLon]) -> list[float]:
     return out
 
 
+def _travelled(leg: dict[str, Any], t: float) -> float:
+    """Metres covered along the leg at time t, at constant speed."""
+    span = leg["arrive_s"] - leg["depart_s"]
+    frac = 1.0 if span <= 0 else min(max((t - leg["depart_s"]) / span, 0.0), 1.0)
+    return frac * leg["cum"][-1]
+
+
 def _position(leg: dict[str, Any], t: float) -> LatLon:
     """Interpolate along the leg polyline at constant speed."""
     path, cum = leg["path"], leg["cum"]
-    span = leg["arrive_s"] - leg["depart_s"]
-    frac = 1.0 if span <= 0 else min(max((t - leg["depart_s"]) / span, 0.0), 1.0)
-    target = frac * cum[-1]
+    target = _travelled(leg, t)
     k = min(bisect.bisect_left(cum, target), len(path) - 1)
     if k == 0 or cum[k] == cum[k - 1]:
         return tuple(path[k])  # type: ignore[return-value]

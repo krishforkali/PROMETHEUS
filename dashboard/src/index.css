@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #020617;
+  color: #f1f5f9;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+}
+
+@layer components {
+  .panel-title {
+    @apply shrink-0 border-b border-slate-800 bg-slate-950 px-3 py-2 text-sm font-bold uppercase tracking-wider text-slate-200;
+  }
+  .btn {
+    @apply rounded px-2.5 py-1.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:opacity-40;
+  }
+  .input {
+    @apply rounded border border-slate-700 bg-slate-900 px-2 py-1 text-sm text-slate-100;
+  }
+}
+
+/* ---- HTML map markers (no glyph server needed) ---- */
+.zone-label {
+  pointer-events: none;
+  font: 700 12px/1 "Segoe UI", system-ui, sans-serif;
+  color: rgba(226, 232, 240, 0.75);
+  text-shadow: 0 1px 2px #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.zl-tag {
+  font-size: 10px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+.zl-cut {
+  background: #dc2626;
+}
+.zl-flood {
+  background: #2563eb;
+}
+
+.hosp-marker {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none;
+}
+.hosp-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: #f8fafc;
+  color: #dc2626;
+  font: 900 14px/20px system-ui, sans-serif;
+  text-align: center;
+  box-shadow: 0 0 0 2px #dc2626;
+}
+.hosp-text {
+  display: flex;
+  flex-direction: column;
+  font: 600 11px/1.15 "Segoe UI", system-ui, sans-serif;
+  color: #e2e8f0;
+  text-shadow: 0 1px 2px #000, 0 0 4px #000;
+  max-width: 150px;
+}
+.hosp-text b {
+  color: #4ade80;
+}
+.hosp-low .hosp-text b {
+  color: #f87171;
+}
+
+.fp-marker {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font: 700 12px/1 "Segoe UI", system-ui, sans-serif;
+  color: #fde68a;
+  text-shadow: 0 1px 2px #000, 0 0 4px #000;
+  pointer-events: none;
+}
+.fp-dot {
+  width: 12px;
+  height: 12px;
+  transform: rotate(45deg);
+  background: #f59e0b;
+  border: 2px solid #0f172a;
+}
+.fp-failed {
+  color: #fca5a5;
+}
+.fp-failed .fp-dot {
+  background: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.35);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.veh-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+.veh-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #0f172a;
+  border: 3px solid var(--vc);
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+.veh-label {
+  margin-top: 1px;
+  font: 700 10px/1 "Segoe UI", system-ui, sans-serif;
+  color: var(--vc);
+  text-shadow: 0 1px 2px #000, 0 0 3px #000;
+  white-space: nowrap;
+}
+.veh-idle .veh-icon {
+  opacity: 0.75;
+}
+.veh-lost .veh-icon {
+  filter: grayscale(1);
+  opacity: 0.4;
+  border-style: dashed;
+}
+.veh-lost .veh-label {
+  text-decoration: line-through;
+}
+
+@keyframes pulse {
+  50% {
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+  }
+}
